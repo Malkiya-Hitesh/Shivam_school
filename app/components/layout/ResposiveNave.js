@@ -45,11 +45,7 @@ function ResposiveNave() {
         </Link>
       </div>
 
-      <div className='navLink max-[640px]:hidden'>
-        <Link href="/admission">
-          <Button variant='outline'>admission</Button>
-        </Link>
-      </div>
+     
 
  
       <GiHamburgerMenu
@@ -104,11 +100,8 @@ function ResposiveNave() {
           </Link>
         </div>
 
-        <div onClick={toggleMenu} className="nav-item">
-          <Link href="/admission">
-            <Button variant='outline'>admission</Button>
-          </Link>
-        </div>
+       
+       
       </div>
     </>
   )

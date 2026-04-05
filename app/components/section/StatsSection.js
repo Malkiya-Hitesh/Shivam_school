@@ -3,12 +3,14 @@ import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TextPlugin } from 'gsap/TextPlugin'
+import Section from '@/app/ui/Section'
+import { P } from '@/app/ui/P'
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
 export default function StatsSection() {
   const countersRef = useRef([])
-  const sectionRef = useRef(null)
+  const sectionERef = useRef(null)
 
   const stats = [
     { label: 'Years of Experience', value: 25 },
@@ -18,7 +20,6 @@ export default function StatsSection() {
   ]
 
   useEffect(() => {
-    // reset refs (important for Next.js strict mode)
 
 
     const ctx = gsap.context(() => {
@@ -28,29 +29,31 @@ export default function StatsSection() {
           { textContent: 0 },
           {
             textContent: stats[i].value,
-            duration: 2,
+            duration: 3,
             ease: 'power1.out',
             snap: { textContent: 1 },
             scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top 80%',
-              once: true, // ✅ play only once (no reverse bug)
-            },
+              trigger: sectionERef.current,
+              start: 'top 90%',
+              markers: true,
+
+            }
           }
         )
       })
-    }, sectionRef)
+    }, sectionERef)
 
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={sectionRef} className="lg:py-18 xl:py-20 md:py-13 sm:py-8  py-5 xl:px-13 lg:px-10 md:px-7 sm:px-5 px-3 bg-[var(--bg-dark-b)]  text-center" >
+    <Section ref={sectionERef} className="bg-[var(--bg-light)] flex justify-center items-center ">
 
-      <div className="grid grid-cols-2 min-[1048px]:grid-cols-4 gap-8 max-[478px]:grid-cols-1">
+
+      <div className="grid grid-cols-2 min-[1048px]:grid-cols-4 gap-8 max-[478px]:grid-cols-1 ">
         {stats.map((item, i) => (
-          <div key={i}>
-            <p className=" text-[2.25rem] sm:text-[2.3rem] md:text-[2.4rem] lg:text-[2.5rem] xl:text-[2.65rem] font-extrabold text-[var(--text-w)]  will-change-transform">
+          <div className=' flex flex-col justify-center items-center' key={i}>
+            <P className=" text-[2.25rem] sm:text-[2.3rem] md:text-[2.4rem] lg:text-[2.5rem] xl:text-[2.65rem] font-extrabold text-[var(--text-w)]  will-change-transform">
               <span
                 ref={(el) => {
                   if (el) countersRef.current[i] = el
@@ -59,13 +62,13 @@ export default function StatsSection() {
                 0
               </span>
               +
-            </p>
+            </P>
             <span className=" block pt-2 text-[1rem] sm:text-[1.05rem] md:text-[1.15rem] lg:text-[1.35rem] xl:text-[1.45rem] text-[var(--text-m)]  font-medium ">
               {item.label}
             </span>
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }

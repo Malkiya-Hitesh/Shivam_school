@@ -34,7 +34,7 @@ font-family: 'Inter', sans-serif;
   --accent: #D91C6A;
 
   --bg: #FFFFFF;
-  --bg-light: #e8ebf7;
+ --bg-light : #e8ebf7;
   --bg-dark: #1A1A1A;
   --bg-primary: #2A1B7F;
   --bg-accent: #D91C6A;
@@ -120,3 +120,17 @@ h3{
   backface-visibility: hidden;
   transform: translateZ(0);
 } */
+
+
+
+
+
+
+
+
+
+
+.char {
+  display: inline-block;
+  
+}

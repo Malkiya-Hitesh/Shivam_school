@@ -23,7 +23,7 @@ export default function PageClient() {
         <Achievement/>
         <Acadmics />
         <Facilities/>
-        <StatsSection />
+    <StatsSection/>
         <Gallry />
         <AdmissionCta />
         <Faq />

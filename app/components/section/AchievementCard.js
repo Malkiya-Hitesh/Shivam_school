@@ -44,22 +44,17 @@ function AchievementCard() {
 
     <div
       ref={containerRef}
-      className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scroll-smooth"
+      className="flex gap-6 overflow-x-auto snap-x snap-mandatory  no-scrollbar scroll-smooth"
     >
 
       {cards.map((card, index) => (
 
         <div
           key={index}
-          // style={{ marginTop: `${index * 2}rem` }}
+         
 
           className={`group relative min-w-[260px] sm:min-w-[300px] lg:min-w-[340px]
-            h-[260px]
-            rounded-2xl overflow-hidden 
-            shadow-lg cursor-pointer 
-            snap-start
-            ${index % 2 !== 0 ? 'lg:mt-16' : ''}
-          `}
+            h-[260px] rounded-2xl shadow-lgcursor-pointer snap-start transition-transform duration-300 hover:scale-105   `}
         >
 
           <Image

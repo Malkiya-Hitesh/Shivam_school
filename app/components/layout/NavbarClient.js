@@ -15,51 +15,39 @@ export default function NavbarClient() {
   const navRef = useRef(null)
 
 
-  // const animatedRef = useRef(false)
-  // useEffect(() => {
-  //   const runAnimation = () => {
-  //     if (animatedRef.current) return
-  //     animatedRef.current = true
+  const animatedRef = useRef(false)
+  useEffect(() => {
+   
 
-  //     const ctx = gsap.context(() => {
-  //       const links = gsap.utils.toArray('.nav-link a')
-  //       const logo = navRef.current.querySelector('.logo-img')
+      const ctx = gsap.context(() => {
+        const links = gsap.utils.toArray('.nav-link a')
+        const logo = navRef.current.querySelector('.logo-img')
 
-  //       gsap.fromTo(
-  //         links,
-  //         { x: 40, opacity: 0 },
-  //         {
-  //           x: 0,
-  //           opacity: 1,
-  //           duration: 1.2,
-  //           stagger: 0.15,
-  //           ease: 'power3.out',
-  //         }
-  //       )
+        gsap.fromTo(
+          links,
+          { x: 40, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1.2,
+            stagger: 0.15,
+            ease: 'power3.out',
+          }
+        )
 
-  //       gsap.from(logo, {
-  //         opacity: 0,
-  //         y: -20,
-  //         duration: 1,
-  //         ease: 'power3.out',
-  //       })
-  //     }, navRef)
+        gsap.from(logo, {
+          opacity: 0,
+          y: -20,
+          duration: 1,
+          ease: 'power3.out',
+        })
+      }, navRef)
 
-  //     return () => ctx.revert()
-  //   }
-
-  //   const handler = () => {
-  //     requestAnimationFrame(() => runAnimation())
-  //   }
- 
-  //   window.addEventListener('loaderFinished', handler)
+      return () => ctx.revert()
+    
 
     
-  //   if (sessionStorage.getItem('school-loader-done')) {
-  //     console.log('Loader already finished → running animation immediately')
-  //     handler()
-  //   } return () => window.removeEventListener('loaderFinished', handler)
-  // }, [])
+  }, [])
 
 
 
@@ -85,9 +73,7 @@ export default function NavbarClient() {
         <Link href={"/contact"}>
          <Button variant='primary'>contact</Button>
         </Link>
-        <Link href={"/admission"}>
-          <Button variant='outline'>admission</Button>
-        </Link>
+      
 
       </div>
       <div className=' lg:hidden flex  justify-end  items-center gap-5 ' >

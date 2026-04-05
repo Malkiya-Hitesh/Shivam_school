@@ -116,7 +116,7 @@ export default function Faq() {
               className="w-full flex justify-between items-center p-5 text-left"
             >
               <Span className={"font-semibold"} data={item.q} />
-              <span className="text-2xl leading-none">
+              <span className="">
                 {active === i ? '−' : '+'}
               </span>
             </button>

@@ -1,5 +1,5 @@
 import HomeClient from "./HomeClient"
-
+''
 function Home() {
   return (
     <HomeClient />

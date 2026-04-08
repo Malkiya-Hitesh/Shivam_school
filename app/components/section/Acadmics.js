@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Button from '@/app/ui/Button'
 import { H2 } from '@/app/ui/H2'
@@ -9,93 +9,106 @@ import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import React, { useEffect, useRef } from 'react'
+import { waitForFontsReady } from '@/app/lib/waitForFonts'
+
 
 function Acadmics() {
 
   const pRef = useRef(null)
 
   useEffect(() => {
-    gsap.registerPlugin(SplitText, ScrollTrigger)
+    let ctx
+  let split
+    const init = async () => {
+      await waitForFontsReady()
+      gsap.registerPlugin(SplitText, ScrollTrigger)
 
-    const ctx = gsap.context(() => {
+      ctx = gsap.context(() => {
 
-      const descS = new SplitText(pRef.current, {
-        type: 'words',
-      })
-
-      const li1 = gsap.utils.toArray('.ul1 li')
-      const li2 = gsap.utils.toArray('.ul2 li')
-
-      // 🔹 Paragraph animation
-      gsap.from(descS.words, {
-        y: 60,
-        opacity: 0,
-        stagger: 0.05,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: pRef.current,
-          start: 'top 80%',
-        }
-      })
-
-      // 🔹 Card 1 Timeline
-      const tl1 = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.h3',
-          start: 'top 80%',
-        
-        }
-      })
-
-      tl1
-        .from('.h3', {   // ✅ FIXED
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
+        const descS = new SplitText(pRef.current, {
+          type: 'lines, words',
         })
-        .from('.p1', {
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-        },"-=0.5")
-        .from(li1, {
-          x: -40,
-          opacity: 0,
-          stagger: 0.2,
-          duration: 0.8,
-        },"-=0.3")
+
+        const li1 = gsap.utils.toArray('.ul1 li')
+        const li2 = gsap.utils.toArray('.ul2 li')
+
       
-      // 🔹 Card 2 Timeline
-      const tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.h31',
-          start: 'top 80%',
-          
-        }
-      })
 
-      tl2
-        .from('.h31', {   // ✅ FIXED
-          y: 40,
+        split = new SplitText(pRef.current, { type: 'lines, words' })
+
+        gsap.from(split.words, {
+          y: 60,
           opacity: 0,
+          stagger: 0.04,
           duration: 0.8,
+          scrollTrigger: {
+            trigger: pRef.current,
+            start: 'top 85%',
+            markers: true
+          }
         })
-        .from('.p2', {
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-        },"-=0.5")
-        .from(li2, {
-          x: -40,
-          opacity: 0,
-          stagger: 0.2,
-          duration: 0.8,
-        },"-=0.3")
-       
 
-    })
+        const tl1 = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.h3',
+            start: 'top 85%',
+            markers: true
+          }
+        })
 
-    return () => ctx.revert()
+        tl1
+          .from('.h3', {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+          })
+          .from('.p1', {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+          }, "-=0.5")
+          .from(li1, {
+            x: -40,
+            opacity: 0,
+            stagger: 0.2,
+            duration: 0.8,
+          }, "-=0.3")
+
+        const tl2 = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.h31',
+            start: 'top 85%',
+            markers: true
+          }
+        })
+
+        tl2
+          .from('.h31', {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+          })
+          .from('.p2', {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+          }, "-=0.5")
+          .from(li2, {
+            x: -40,
+            opacity: 0,
+            stagger: 0.2,
+            duration: 0.8,
+          }, "-=0.3")
+
+      })
+    }
+
+    init()
+
+    return () => {
+      ctx?.revert()
+      split?.revert()
+    }
   }, [])
 
   return (
@@ -103,19 +116,18 @@ function Acadmics() {
 
       <H2 className='text-center'>Academics</H2>
 
-      <div ref={pRef}>
-        <P className='text-center'>
-          Our academic programs inspire students to learn, think critically,
-          and build strong knowledge for future success.
-        </P>
-      </div>
+
+      <P ref={pRef} className='text-center'>
+        Our academic programs inspire students to learn, think critically,
+        and build strong knowledge for future success.
+      </P>
+
 
       <div className="grid md:grid-cols-2 gap-8">
 
-        {/* Card 1 */}
-        <div className="p-6 rounded-xl shadow-md space-y-4 bg-[var(--bg-light)]">
-          <H2>Primary & Middle</H2>
-          <H3 className='h3 text-[var(--text-primary)]'>Grade Levels 1–8</H3>
+        <div  className="p-6 rounded-xl shadow-md space-y-4 bg-[var(--bg-light)]">
+          <H2   style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }} className=' md:text-[2.6rem] ' >Primary </H2>
+          <H3 className='h3 text-[var(--text-primary)]'>Grade Levels 1 to 8 </H3>
 
           <P className='p1 line-clamp-2'>
             Our curriculum builds strong foundations in mathematics, science, language, and social studies while encouraging creativity and hands-on learning.
@@ -135,13 +147,13 @@ function Acadmics() {
           </Button>
         </div>
 
-        {/* Card 2 */}
         <div className="p-6 rounded-xl shadow-md space-y-4 bg-[var(--bg-light)]">
-          <H2>High Education</H2>
-          <H3 className='h31 text-[var(--text-primary)]'>Grade Levels 9–12</H3>
+          <H2  style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }} className='  md:text-[2.6rem] '>High Education</H2>
+          <H3 className='h31 text-[var(--text-primary)]'>Grade Levels 9 to 12</H3>
 
           <P className='p2 line-clamp-2'>
-            Our high school program prepares students for college and future  careers through advanced courses and personalized guidance.        </P>
+            Our high school program prepares students for college and future  careers through advanced courses and personalized guidance.
+          </P>
 
           <ul className="ul2 space-y-2 list-disc pl-5 text-gray-600">
             <li>Advanced Placement (AP) courses</li>

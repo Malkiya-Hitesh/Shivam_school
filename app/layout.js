@@ -19,54 +19,6 @@ const poppins = Poppins({
 });
 
 
-// export const metadata = {
-//   metadataBase: new URL("https://gnanagangothrividyalaya.in"),
-
-//   title: {
-//     default: "Gnana Gangothri Vidyalaya",
-//     template: "%s | Gnana Gangothri Vidyalaya",
-//   },
-
-//   description:
-//     "Gnana Gangothri Vidyalaya providing quality education and holistic development.",
-
-//   authors: [{ name: "Malkiya Hitesh" }],
-
-//   robots: {
-//     index: true,
-//     follow: true,
-//   },
-
-//   alternates: {
-//     canonical: "https://gnanagangothrividyalaya.in",
-//   },
-
-//   openGraph: {
-//     title: "Gnana Gangothri Vidyalaya",
-//     description:
-//       "Gnana Gangothri Vidyalaya providing quality education and holistic development.",
-//     siteName: "Gnana Gangothri Vidyalaya",
-//     locale: "en_IN",
-//     type: "website",
-//     images: [
-//       {
-//         url: "/image/logo.png",
-//         width: 1200,
-//         height: 630,
-//         alt: "Gnana Gangothri Vidyalaya",
-//       },
-//     ],
-//   },
-
-//   twitter: {
-//     card: "summary_large_image",
-//     title: "Gnana Gangothri Vidyalaya",
-//     description:
-//       "Gnana Gangothri Vidyalaya providing quality education and holistic development.",
-//     images: ["/image/logo.png"],
-//   },
-// };
-
 
 export default function RootLayout({ children }) {
   return (

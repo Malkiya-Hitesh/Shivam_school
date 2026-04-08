@@ -15,7 +15,7 @@ const leaders = [
   {
     name: "Harsh Vandamna Sharma",
     role: "Founder",
-    image: "/image/1.webp",
+    image: "/image/3.webp",
     bio: `Our institution is guided by experienced educators and trustees
     who are committed to shaping the future of our students. Our institution
     is guided by experienced educators and trustees who are committed to
@@ -24,7 +24,7 @@ const leaders = [
   {
     name: "Harsh Vandamna Sharma",
     role: "Principal",
-    image: "/image/1.webp",
+    image: "/image/2.webp",
     bio: `Our institution is guided by experienced educators and trustees
     who are committed to shaping the future of our students. Our institution
     is guided by experienced educators and trustees who are committed to
@@ -33,7 +33,7 @@ const leaders = [
   {
     name: "Harsh Vandamna Sharma",
     role: "Trustee",
-    image: "/image/1.webp",
+    image: "/image/4.webp",
     bio: `Our institution is guided by experienced educators and trustees
     who are committed to shaping the future of our students. Our institution
     is guided by experienced educators and trustees who are committed to
@@ -43,49 +43,56 @@ const leaders = [
 
 function Leadership() {
   const sectionRef = useRef(null);
+  const wrapperRef = useRef(null);
   const cardsRef = useRef([]);
 
- useEffect(() => {
-  const cards = cardsRef.current;
+  useEffect(() => {
+    const cards = cardsRef.current;
+    const wrapper = wrapperRef.current;
 
-  const ctx = gsap.context(() => {
-    // પહેલા બધા cards ને hidden કરો
-    gsap.set(cards, { opacity: 1, y: "400" });
-    // પહેલો card visible કરો
-    gsap.set(cards[0], { opacity: 1, y: 0, zIndex: 1 });
+    // ✅ Wrapper ની height = tallest card જેટલી set કરો dynamically
+    const maxHeight = Math.max(...cards.map((c) => c.offsetHeight));
+    wrapper.style.height = `${maxHeight }px`;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top -=150",
-        end: "+=2500",
-        scrub: 1,
-        pin: true,
-      },
-    });
+    const ctx = gsap.context(() => {
+      // બધા cards ને નીચે છુપાવો, પહેલો visible
+      gsap.set(cards, { opacity: 0, y: "100%" });
+      gsap.set(cards[0], { opacity: 1, y: "0%", zIndex: 1 });
 
-    cards.forEach((_, i) => {
-      if (i === 0) return;
+      const tl = gsap.timeline({
+        scrollTrigger: {
+             
+          trigger: sectionRef.current,
+          start: "bottom bottom",
+          end: `+=${cards.length * 800}`,
+          scrub: 1,
+          pin: true,
+       anticipatePin: 1,
+          markers: true,
+          pinSpacing: true,
+        },
+      });
 
-      // Previous card — scale down અને fade out
-      tl.fromTo(
-        cards[i - 1],
-        { scale: 1, opacity: 1 },
-        { scale: 0.90, opacity: 0, duration: 1, ease: "power2.inOut" }
-      );
+      cards.forEach((_, i) => {
+        if (i === 0) return;
 
-      // Current card — y: 100% થી 0% અને opacity 0 થી 1
-      tl.fromTo(
-        cards[i],
-        { y: "100%", opacity: 0, zIndex: i + 1 },
-        { y: "0%", opacity: 1, duration: 1, ease: "power2.inOut" },
-        "<"
-      );
-    });
-  }, sectionRef);
+        tl.fromTo(
+          cards[i - 1],
+          { scale: 1, opacity: 1 },
+          { scale: 0.92, opacity: 1, duration: 1, ease: "power2.inOut" }
+        );
 
-  return () => ctx.revert();
-}, []);
+        tl.fromTo(
+          cards[i],
+          { y: "100%", opacity: 1, zIndex: i + 1 },
+          { y: "0%", opacity: 1, duration: 1, ease: "power2.inOut" },
+          "<"
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <Section ref={sectionRef} className="flex flex-col gap-8 bg-[var(--bg-light)]">
@@ -95,7 +102,8 @@ function Leadership() {
         who are committed to shaping the future of our students.
       </P>
 
-      <div className="relative w-full" style={{ height: "560px" }}>
+      {/* ✅ Wrapper — JS થી height set થશે dynamically */}
+      <div ref={wrapperRef} className="relative w-full overflow-hidden ">
         {leaders.map((leader, index) => {
           const isReverse = index % 2 !== 0;
 
@@ -103,32 +111,30 @@ function Leadership() {
             <div
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="absolute inset-0 bg-[var(--bg)] rounded-2xl p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center overflow-hidden"
+              // ✅ absolute + w-full — height content પ્રમાણે automatic
+              className={`absolute top-0 left-0 w-full bg-[var(--bg)] rounded-2xl shadow-lg border border-gray-200 grid lg:grid-cols-2 gap-0 overflow-hidden `}
             >
-              {/* Image — flips side based on index */}
+              {/* ✅ Image — aspect-ratio થી height automatic */}
               <div
-                className={`relative w-full h-[260px] md:h-[400px] rounded-2xl overflow-hidden ${
-                  isReverse ? "md:order-last" : ""
-                }`}
+                className={`relative w-full aspect-[4/3] lg:aspect-auto lg:min-h-[350px] overflow-hidden ${isReverse ? "lg:order-last" : ""
+                  }`}
               >
                 <Image
                   src={leader.image}
                   alt={leader.name}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
-                {/* Role badge over image */}
                 <div className="absolute bottom-4 left-4 bg-[var(--primary)] text-white text-sm font-medium px-4 py-1.5 rounded-full">
                   {leader.role}
                 </div>
               </div>
 
-              {/* Content */}
-              <div className={`flex flex-col gap-5 ${isReverse ? "md:order-first" : ""}`}>
-                {/* Index number */}
-                <span className="text-6xl font-bold text-[var(--primary)] opacity-15 leading-none select-none">
-                  0{index + 1}
-                </span>
+              {/* ✅ Content — padding થી height natural રહે */}
+              <div
+                className={`flex flex-col justify-center gap-5 p-8 lg:p-10 ${isReverse ? "lg:order-first" : ""
+                  }`}
+              >
                 <H3>{leader.name}</H3>
                 <Span className="text-[var(--primary)] font-medium tracking-wide uppercase text-sm">
                   {leader.role}

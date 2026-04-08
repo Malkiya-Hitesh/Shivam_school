@@ -10,114 +10,137 @@ import React, { useEffect, useRef } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const curriculums = [
+  {
+    title: 'Primary',
+    buttons: ['std : 1 to 5', 'std : 6 to 10'],
+    desc: 'Our primary curriculum focuses on building a strong foundation in core subjects such as mathematics, language arts, science, and social studies.',
+    image: '/image/1.webp',
+    reverse: false,
+  },
+  {
+    title: 'Secondary',
+    buttons: ['std : 6 to 9', 'age : 10 to 14'],
+    desc: 'Our secondary curriculum builds on the foundation established in primary school, offering more advanced courses in a variety of subjects.',
+    image: '/image/1.webp',
+    reverse: true,
+  },
+  {
+    title: 'Higher Secondary',
+    buttons: ['std : 10 to 12', 'age : 14 to 17'],
+    desc: 'Our higher secondary curriculum prepares students for university and beyond, with a focus on critical thinking and independent learning.',
+    image: '/image/1.webp',
+    reverse: false,
+  },
+]
+
 function Curiculam() {
-    const sectionRef = useRef(null)
-    const card1Ref = useRef(null)
-    const card2Ref = useRef(null)
-    const card3Ref = useRef(null)
+  const sectionRef = useRef(null)
+  const wrapperRef = useRef(null)
+  const cardsRef = useRef([])
 
-    useEffect(() => {
-        const cards = [card1Ref.current, card2Ref.current, card3Ref.current]
+  useEffect(() => {
+    const cards = cardsRef.current
+    const wrapper = wrapperRef.current
 
-        const ctx = gsap.context(() => {
-            gsap.set(cards[0], { y: 0, scale: 1, opacity: 1, zIndex: 1 })
-            cards.forEach((card, i) => {
-                if (i === 0) return
-                gsap.set(card, { y: '100%', scale: 1, opacity: 1, zIndex: i + 1 })
-            })
+    const setHeight = () => {
+      const maxHeight = Math.max(...cards.map((c) => c.offsetHeight))
+      wrapper.style.height = `${maxHeight}px`
+    }
+    setHeight()
+    window.addEventListener('load', setHeight)
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top -=150',
-                    end: '+=2500',
-                    scrub: 1,
-                    pin: true,
-                },
-            })
+    const ctx = gsap.context(() => {
+      gsap.set(cards[0], { y: 0, scale: 1, opacity: 1, zIndex: 1 })
+      cards.forEach((card, i) => {
+        if (i === 0) return
+        gsap.set(card, { y: '100%', scale: 1, opacity: 1, zIndex: i + 1 })
+      })
 
-            cards.forEach((_, i) => {
-                if (i === 0) return
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: '95% bottom',
+          end: `+=${cards.length * 800}`,
+          scrub: 1,
+          pin: true,
+        
+            markers: true,
+        },
+      })
 
-                tl.to(cards[i - 1], {
-                    scale: 0.95,
-                    opacity: 0.6,
-                    duration: 1,
-                    ease: 'power2.inOut',
-                })
+      cards.forEach((_, i) => {
+        if (i === 0) return
 
-                tl.to(cards[i], {
-                    y: '0%',
-                    scale: 1,
-                    opacity: 1,
-                    duration: 1,
-                    ease: 'power2.inOut',
-                }, '<')
-            })
-        }, sectionRef)
+        tl.to(cards[i - 1], {
+          scale: 0.95,
+          opacity: 0.6,
+          zIndex: i,
+          duration: 1,
+          ease: 'power2.inOut',
+        })
 
-        return () => ctx.revert()
-    }, [])
+        tl.to(
+          cards[i],
+          {
+            y: '0%',
+            scale: 1,
+            opacity: 1,
+            duration: 1,
+            ease: 'power2.inOut',
+          },
+          '<'
+        )
+      })
+    }, sectionRef)
 
-    return (
-        <Section ref={sectionRef} className='curiculam-section flex flex-col gap-8 bg-[var(--bg-light)]'>
-            <H2 className='text-center'>Curiculam</H2>
-            <P className='text-center mt-4 p-text'>
-                We offer a comprehensive curriculum that covers a wide range of subjects,
-                including mathematics, language arts, science, literature, history, and the arts.
-            </P>
+    return () => {
+      window.removeEventListener('load', setHeight)
+      ctx.revert()
+    }
+  }, [])
 
-            {/* This is the key fix — relative container with fixed height, cards are absolute */}
-            <div className='relative w-full' style={{ height: '600px' }}>
+  return (
+    <Section ref={sectionRef} className='flex flex-col gap-8 bg-[var(--bg-light)]'>
+      <H2 className='text-center'>Curiculam</H2>
+      <P className='text-center mt-4 p-text'>
+        We offer a comprehensive curriculum that covers a wide range of subjects,
+        including mathematics, language arts, science, literature, history, and the arts.
+      </P>
 
-                <div ref={card1Ref} className='absolute inset-0 curriculum-card grid grid-cols-[0.8fr_1fr] bg-[var(--bg)] rounded-2xl gap-12 p-8'>
-                    <div className='w-full h-full rounded-2xl flex items-center justify-center'>
-                        <Image src="/image/1.webp" alt='curiculam' width={500} height={500} className='w-full h-auto rounded-2xl' />
-                    </div>
-                    <div className='flex flex-col gap-5'>
-                        <H2 an={false}>Primary</H2>
-                        <div className='flex flex-row gap-2 mt-4'>
-                            <Button variant='outline'>std : 1 to 5</Button>
-                            <Button variant='outline'>std : 6 to 10</Button>
-                        </div>
-                        <P>Our primary curriculum focuses on building a strong foundation in core subjects such as mathematics, language arts, science, and social studies.</P>
-                        <Button className='mt-4' variant='primary'>Download Fee Structure</Button>
-                    </div>
-                </div>
-
-                <div ref={card2Ref} className='absolute inset-0 curriculum-card grid grid-cols-[1fr_0.8fr] bg-[var(--bg)] rounded-2xl gap-12 p-8'>
-                    <div className='flex flex-col gap-5'>
-                        <H2 an={false}>Secondary</H2>
-                        <div className='flex flex-row gap-2 mt-4'>
-                            <Button variant='outline'>std : 6 to 9</Button>
-                            <Button variant='outline'>age : 10 to 14</Button>
-                        </div>
-                        <P>Our secondary curriculum builds on the foundation established in primary school, offering more advanced courses in a variety of subjects.</P>
-                        <Button className='mt-4' variant='primary'>Download Fee Structure</Button>
-                    </div>
-                    <div className='w-full h-full rounded-2xl flex items-center justify-center'>
-                        <Image src="/image/1.webp" alt='curiculam' width={500} height={500} className='w-full h-auto rounded-2xl' />
-                    </div>
-                </div>
-
-                <div ref={card3Ref} className='absolute inset-0 curriculum-card grid grid-cols-[0.8fr_1fr] bg-[var(--bg)] rounded-2xl gap-12 p-8'>
-                    <div className='w-full h-full flex items-center justify-center'>
-                        <Image src="/image/1.webp" alt='curiculam' width={500} height={500} className='w-full h-auto rounded-2xl' />
-                    </div>
-                    <div className='flex flex-col gap-5'>
-                        <H2 an={false}>Higher Secondary</H2>
-                        <div className='flex flex-row gap-2 mt-4'>
-                            <Button variant='outline'>std : 10 to 12</Button>
-                            <Button variant='outline'>age : 14 to 17</Button>
-                        </div>
-                        <P>Our higher secondary curriculum prepares students for university and beyond, with a focus on critical thinking and independent learning.</P>
-                        <Button className='mt-4' variant='primary'>Download Fee Structure</Button>
-                    </div>
-                </div>
-
+      <div ref={wrapperRef} className='relative w-full overflow-hidden'>
+        {curriculums.map((item, index) => (
+          <div
+            key={index}
+            ref={(el) => (cardsRef.current[index] = el)}
+            className={`absolute top-0 left-0 w-full bg-[var(--bg)] rounded-2xl shadow-lg
+              border border-gray-200 grid lg:grid-cols-2 gap-12 p-8 overflow-hidden`}
+          >
+            <div className={`w-full flex items-center justify-center ${item.reverse ? 'lg:order-last' : ''}`}>
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={500}
+                height={500}
+                className='w-full h-auto rounded-2xl'
+              />
             </div>
-        </Section>
-    )
+            <div className={`flex flex-col gap-5 ${item.reverse ? 'lg:order-first' : ''}`}>
+              <H2 an={false}>{item.title}</H2>
+              <div className='flex flex-row gap-2 mt-4'>
+                {item.buttons.map((btn, i) => (
+                  <Button key={i} variant='outline'>{btn}</Button>
+                ))}
+              </div>
+              <P>{item.desc}</P>
+              
+              <Button className='mt-4' variant='primary'>Download Fee Structure</Button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  )
 }
 
 export default Curiculam

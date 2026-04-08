@@ -1,22 +1,36 @@
-import { P } from "@/app/ui/P";
-import Image from "next/image";
+import Image from "next/image"
 
-
-
-
-
-export default function Student({ name, pr, img }) {
+export default function Student({ name, pr, img, isTopper = false }) {
   return (
-    <div className="grid justify-items-center bg-[var(--bg-light)] p-4 rounded">
-      <Image
-        src={img}
-        width={500}
-        height={500}
-        alt={name}
-        className="aspect-square rounded-[50%] h-[100%]  w-auto object-cover"
-      />
-      <h4 className="font-semibold text-2xl mt-2">{name}</h4>
-      <P className=" text-xl">{pr} PR</P>
+    <div className={`flex flex-col items-center rounded-xl p-4 gap-2 text-center
+      `}>
+
+     
+
+      <div className="relative">
+        <Image
+          src={img}
+          width={500}
+          height={500}
+          alt={name}
+          className={`rounded-full object-cover
+            ${isTopper ? "w-full h-full aspect-square" : "w-full h-full aspect-square"}`}
+        />
+      </div>
+
+      <h3 className={`font-semibold ${isTopper ? "text-lg" : "text-sm"}`}>
+        {name}
+      </h3>
+
+      <p className={`text-[var(--color-text-muted)] ${isTopper ? "text-base" : "text-sm"}`}>
+        {pr} PR
+      </p>
+
+      {isTopper && (
+        <span className="text-xs font-medium bg-purple-200 text-purple-800 px-3 py-1 rounded-full">
+          Topper
+        </span>
+      )}
     </div>
   )
 }

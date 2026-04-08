@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import { H2 } from '@/app/ui/H2'
 import { P } from '@/app/ui/P'
 import Section from '@/app/ui/Section'
+import { waitForFontsReady } from '@/app/lib/waitForFonts'
 
 // Install: npm install gsap
 // SplitText requires GSAP Club license — gsap.com/splittext
@@ -19,6 +20,7 @@ function AdmissionCta() {
     let ctx
 
     const init = async () => {
+      await waitForFontsReady()
       const { gsap }          = await import('gsap')
       const { ScrollTrigger } = await import('gsap/ScrollTrigger')
       const { SplitText }     = await import('gsap/SplitText')

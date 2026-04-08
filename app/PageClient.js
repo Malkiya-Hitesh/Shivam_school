@@ -1,4 +1,3 @@
-'use client'
 
 
 import Acadmics from "./components/section/Acadmics"

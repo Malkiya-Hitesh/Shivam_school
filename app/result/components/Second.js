@@ -2,13 +2,7 @@ import { H2 } from "@/app/ui/H2"
 import React from "react"
 import ResultBlock from "./ResultBlock"
 
-
-
-
-
-
 function Second({ year }) {
-
   const std10 = {
     topper: { name: "Hardik Gabu", pr: 89, img: "/image/1.webp" },
     students: [
@@ -35,13 +29,9 @@ function Second({ year }) {
 
   return (
     <div className="flex flex-col gap-12">
-
       <H2 className="text-center">{year}</H2>
-
       <ResultBlock title="Std 10" {...std10} />
-
       <ResultBlock title="Std 12 Arts" {...std12Arts} />
-
     </div>
   )
 }

@@ -24,31 +24,39 @@ export default function Facilities() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(cardsRef.current, {
-        opacity: 0,
-        scale: 0.70,
-        y: 30,
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          scrub: true,
-          markers: true,
-        },
+      cardsRef.current.forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          duration: 0.6,
+          y: 30,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: card,          // 🔥 individual trigger
+            start: 'top 85%',
+           end: 'top 30%',
+           
+
+            scrub: true,
+
+            markers: true,
+          },
+        })
       })
+
+
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
 
   return (
-    <Section ref={sectionRef} className="">
+    <Section className="">
       <H2 className="text-center mb-10">Our Facilities</H2>
       <P className="text-center mb-12 text-gray-600">
-        We provide state-of-the-art facilities to support our students' academic and extracurricular growth.
+        We provide state-of-the-art facilities to support our students&apos; academic and extracurricular growth.
       </P>
 
-      <div className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div ref={sectionRef} className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {facilities.map((facility, index) => (
           <div
             key={index}

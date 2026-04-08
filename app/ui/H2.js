@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react"
 
 
 gsap.registerPlugin(SplitText)
-export function H2({ children, className = '' , an=true }) {
+export function H2({ children, className = '' , an=true , style={} }) {
 
 const h2Ref = useRef(null)
 useEffect(()=>{
@@ -21,7 +21,8 @@ useEffect(()=>{
     scrollTrigger:{
 
       trigger: h2Ref.current,
-      start: "top 80%",
+      start: "top 85%",
+      markers:true
 
       
     }
@@ -41,9 +42,9 @@ useEffect(()=>{
   return (
     <h2
       ref={h2Ref}
-      className={`text-[2rem] sm:text-[2.4rem] md:text-[2.75rem] lg:text-[3rem]
-      font-semibold tracking-tight bg-gradient-to-r from-[#2A1B7F] to-[#D91C6A] bg-clip-text text-transparent
-      ${className}`}
+      style={style}
+      className={`  text-[2rem] sm:text-[2.4rem] md:text-[2.70rem]   lg:text-[3rem]
+      font-semibold tracking-tight bg-gradient-to-r from-[#2A1B7F] to-[#D91C6A] bg-clip-text text-transparent   ${className} `}
     >
       {children}
     </h2>

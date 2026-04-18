@@ -7,8 +7,8 @@ import { H3 } from "@/app/ui/H3";
 import { Span } from "@/app/ui/Span";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
-
+import { useEffect, useLayoutEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 gsap.registerPlugin(ScrollTrigger);
 
 const leaders = [
@@ -45,17 +45,17 @@ function Leadership() {
   const sectionRef = useRef(null);
   const wrapperRef = useRef(null);
   const cardsRef = useRef([]);
-
-  useEffect(() => {
+let pathname = usePathname()
+useLayoutEffect(() => {
     const cards = cardsRef.current;
     const wrapper = wrapperRef.current;
 
-    // ✅ Wrapper ની height = tallest card જેટલી set કરો dynamically
+  
     const maxHeight = Math.max(...cards.map((c) => c.offsetHeight));
     wrapper.style.height = `${maxHeight }px`;
 
     const ctx = gsap.context(() => {
-      // બધા cards ને નીચે છુપાવો, પહેલો visible
+      
       gsap.set(cards, { opacity: 0, y: "100%" });
       gsap.set(cards[0], { opacity: 1, y: "0%", zIndex: 1 });
 
@@ -68,7 +68,6 @@ function Leadership() {
           scrub: 1,
           pin: true,
        anticipatePin: 1,
-          markers: true,
           pinSpacing: true,
         },
       });
@@ -92,18 +91,18 @@ function Leadership() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [pathname]);
 
   return (
-    <Section ref={sectionRef} className="flex flex-col gap-8 bg-[var(--bg-light)]">
+    <Section ref={sectionRef} className="flex flex-col gap-8 bg-[var(--bg-light)] overflow-x-hidden ">
       <H2 className="text-center">Leadership & Management</H2>
       <P className="text-center max-w-2xl mx-auto p-text">
         Our institution is guided by experienced educators and trustees
         who are committed to shaping the future of our students.
       </P>
 
-      {/* ✅ Wrapper — JS થી height set થશે dynamically */}
-      <div ref={wrapperRef} className="relative w-full overflow-hidden ">
+     
+      <div ref={wrapperRef} className="relative  overflow-hidden ">
         {leaders.map((leader, index) => {
           const isReverse = index % 2 !== 0;
 
@@ -112,7 +111,7 @@ function Leadership() {
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
               // ✅ absolute + w-full — height content પ્રમાણે automatic
-              className={`absolute top-0 left-0 w-full bg-[var(--bg)] rounded-2xl shadow-lg border border-gray-200 grid lg:grid-cols-2 gap-0 overflow-hidden `}
+              className={`absolute top-0 left-0 w-full bg-[var(--bg)] rounded-2xl shadow-lg border border-gray-200 grid lg:grid-cols-2 gap-0 overflow-hidden  overflow-hidden`}
             >
               {/* ✅ Image — aspect-ratio થી height automatic */}
               <div

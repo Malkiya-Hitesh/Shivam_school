@@ -22,11 +22,13 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning >
       <body>
-        <Navbar />
-     {children}
-     {/* <Footer /> */}
+         <Navbar />
+       
+         
+          {children}
+       <Footer />
       </body>
     </html>
   );

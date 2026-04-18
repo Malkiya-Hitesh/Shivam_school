@@ -44,7 +44,7 @@ function SchoolAchievement() {
     ]
 
     return (
-        <Section className='bg-[var(--bg-light)] text-center flex flex-col gap-16'>
+        <Section className='bg-[var(--bg-light)] text-center flex flex-col gap-16 overflow-hidden'>
             <H2>Achievements</H2>
             <P> Our students have achieved remarkable success in various fields, including academics, sports, and arts. We take pride in their accomplishments and celebrate their hard work and dedication.</P>
             <div
@@ -64,8 +64,9 @@ function SchoolAchievement() {
                         <Image
                             src={card.img}
                             fill
+                              sizes="(max-width: 640px) 260px,  (max-width: 768px) 300px,340px"
                             alt={card.title}
-                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            className="object-cover transition-transform duration-500 duration-500 group-hover:-translate-y-2 group-hover:scale-[1.03]"
                         />
 
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-5 text-white opacity-0 group-hover:opacity-100 transition duration-500">

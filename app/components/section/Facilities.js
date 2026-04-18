@@ -1,16 +1,17 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Section from '@/app/ui/Section'
 import { H2 } from '@/app/ui/H2'
 import { P } from '@/app/ui/P'
 import Image from 'next/image'
-
+import { usePathname } from 'next/navigation'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Facilities() {
+  let pathname = usePathname()
   const cardsRef = useRef([])  // ✅ Array of refs instead of single ref
   const sectionRef = useRef(null)
   const facilities = [
@@ -22,32 +23,39 @@ export default function Facilities() {
     { title: 'Safety & Security', desc: 'CCTV surveillance and disciplined campus environment.' },
   ]
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      cardsRef.current.forEach((card) => {
+  useLayoutEffect(() => {
+    let ctx
+    let cards = []
+    if (pathname !== '/') return
+
+    if (!sectionRef.current) return
+    cards = cardsRef.current.filter(Boolean)  // ✅ Filter out any null refs
+    ctx = gsap.context(() => {
+          if (!cards) return
+      cards.forEach((card) => {
+
+    
         gsap.from(card, {
           opacity: 0,
           duration: 0.6,
           y: 30,
           ease: 'power2.out',
           scrollTrigger: {
-            trigger: card,          // 🔥 individual trigger
+            trigger: card,
             start: 'top 85%',
-           end: 'top 30%',
-           
+            end: 'top 30%',
+
 
             scrub: true,
-
-            markers: true,
           },
         })
       })
 
 
     }, sectionRef)
-
+    cards = []
     return () => ctx.revert()
-  }, [])
+  }, [pathname])
 
   return (
     <Section className="">

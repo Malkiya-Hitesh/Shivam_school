@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Section from "@/app/ui/Section";
@@ -21,29 +21,23 @@ export default function Value() {
   const cardRefs = useRef([]);
   const h3Refs = useRef([]);
   const pRefs = useRef([]);
-
- useEffect(() => {
+ 
+  useLayoutEffect(() => {
   const ctx = gsap.context(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 75%",
-        end: "bottom 25%",
-        scrub: 1.2,
-      },
-    });
+  
 
-    // All cards
-    tl.from(cardRefs.current, {
-      y: 60,
-      opacity: 0,
-      ease: "power3.out",
-    }, 0);
+ 
 
-    // All rings draw
-    tl.to(ringRefs.current, {
+   
+    gsap.to(ringRefs.current, {
       strokeDashoffset: 0,
       ease: "none",
+         scrollTrigger: {
+        trigger: ringRefs.current,
+        start: "top 85%",
+        end: "top 5%",
+        scrub: 1.2,
+      },
     }, 0);
 
    
@@ -55,7 +49,7 @@ export default function Value() {
         ease: "power3.out",
         scrollTrigger:{
           trigger: h3,
-          start: "top 80%",
+          start: "top 85%",
         }
       });
     });
@@ -68,7 +62,7 @@ export default function Value() {
         ease: "power3.out",
         scrollTrigger:{
           trigger: p,
-          start: "top 80%",
+          start: "top 85%",
         }
       });  
     })

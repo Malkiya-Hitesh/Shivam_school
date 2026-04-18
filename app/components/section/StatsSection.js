@@ -1,14 +1,15 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TextPlugin } from 'gsap/TextPlugin'
 import Section from '@/app/ui/Section'
 import { P } from '@/app/ui/P'
-
+import { usePathname } from 'next/navigation'
 gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
 export default function StatsSection() {
+  let pathname = usePathname()
   const countersRef = useRef([])
   const sectionERef = useRef(null)
 
@@ -19,32 +20,29 @@ export default function StatsSection() {
     { label: 'Awards Won', value: 30 },
   ]
 
-  useEffect(() => {
-
+useLayoutEffect(() => {
 
     const ctx = gsap.context(() => {
       countersRef.current.forEach((el, i) => {
-        gsap.fromTo(
-          el,
-          { textContent: 0 },
-          {
-            textContent: stats[i].value,
-            duration: 3,
-            ease: 'power1.out',
-            snap: { textContent: 1 },
-            scrollTrigger: {
-              trigger: sectionERef.current,
-              start: 'top 90%',
-              markers: true,
+      let obj = { val: 0 }
 
-            }
-          }
-        )
-      })
-    }, sectionERef)
+gsap.to(obj, {
+  val: stats[i].value,
+  duration: 5,
+   scrollTrigger: {
+              trigger: countersRef.current[i] || el,
+              start: 'top 85%',
+
+            },
+  onUpdate: () => {
+    el.innerText = Math.floor(obj.val)
+  }
+})
+      })  
+    }, sectionERef) 
 
     return () => ctx.revert()
-  }, [])
+  }, [pathname])
 
   return (
     <Section ref={sectionERef} className="bg-[var(--bg-light)] flex justify-center items-center ">

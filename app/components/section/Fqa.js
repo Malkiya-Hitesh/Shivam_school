@@ -1,15 +1,15 @@
 'use client'
 
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useState, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import H1 from '../ui2/H1'
+
 import Span from '../ui2/Span'
 import P from '../ui2/P'
-import { H3 } from '@/app/ui/H3'
+
 import { H2 } from '@/app/ui/H2'
 import Section from '@/app/ui/Section'
-
+import { usePathname } from 'next/navigation'
 gsap.registerPlugin(ScrollTrigger)
 
 const faqs = [
@@ -34,42 +34,59 @@ const faqs = [
 export default function Faq() {
   const sectionRef = useRef(null)
   const contentRefs = useRef([])
+  const divRef = useRef(null)
   const [active, setActive] = useState(null)
+  let pathname = usePathname()
 
-  // 🔹 Scroll reveal animation
-  useEffect(() => {
+  useLayoutEffect(() => {
+
     const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray(sectionRef.current.children)
+      
+     gsap.set(
+  sectionRef.current.querySelectorAll('.faq-item'),
+  {
+    opacity: 0,
+    y: 60,
+  }
+)
 
-      gsap.from(items, {
-        opacity: 0,
-        y: 60,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-        },
+      ScrollTrigger.batch(sectionRef.current.querySelectorAll('.faq-item'), {
+        start: 'top 85%',
+
+        onEnter: (batch) => {
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: 'power3.out',
+            
+          })
+        }
       })
 
-      // Set initial accordion state
+ 
+
       contentRefs.current.forEach(el => {
         gsap.set(el, { height: 0, opacity: 0 })
       })
-    })
+
+
+    }, sectionRef)
 
     return () => ctx.revert()
-  }, [])
+  }, [pathname])
 
-  // 🔹 Accordion toggle handler
+
   const toggleItem = index => {
     if (active === index) {
+
       gsap.to(contentRefs.current[index], {
         height: 0,
         opacity: 0,
         duration: 0.3,
         ease: 'power2.inOut',
+        onComplete: () => ScrollTrigger.refresh(),
       })
       setActive(null)
       return
@@ -85,31 +102,34 @@ export default function Faq() {
       })
     }
 
-    // Open current
-    gsap.to(contentRefs.current[index], {
-      height: 'auto',
+
+    const el = contentRefs.current[index]
+
+    gsap.to(el, {
+      height: el.scrollHeight,
       opacity: 1,
       duration: 0.35,
       ease: 'power2.out',
+        onComplete: () => ScrollTrigger.refresh(),
     })
 
     setActive(index)
   }
 
   return (
-    
-      <Section className='flex flex-col items-center  gap-8'>
-       <H2 className={"text-center"} > Frequently Asked Questions </H2>
-      
+
+    <Section ref={sectionRef} className='flex flex-col items-center  gap-8'>
+      <H2 className={"text-center"} > Frequently Asked Questions </H2>
+
 
       <div
-        ref={sectionRef}
+        ref={divRef}
         className="    flex flex-col gap-3 "
       >
         {faqs.map((item, i) => (
           <div
             key={i}
-            className="border rounded-xl overflow-hidden bg-white"
+            className="border rounded-xl overflow-hidden bg-white faq-item"
           >
             <button
               onClick={() => toggleItem(i)}
@@ -130,6 +150,6 @@ export default function Faq() {
           </div>
         ))}
       </div>
-   </Section>
+    </Section>
   )
 }

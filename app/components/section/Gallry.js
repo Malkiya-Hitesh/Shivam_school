@@ -1,6 +1,6 @@
 ﻿'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import Image from 'next/image'
 import Section from '@/app/ui/Section'
 import { H2 } from '@/app/ui/H2'
@@ -8,20 +8,14 @@ import { P } from '@/app/ui/P'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { waitForFontsReady } from '@/app/lib/waitForFonts'
 
+import { usePathname } from 'next/navigation'
 gsap.registerPlugin(SplitText, ScrollTrigger)
 
-// Distribute images into N columns in a round-robin fashion
-function distributeIntoColumns(images, numCols) {
-    const cols = Array.from({ length: numCols }, () => [])
-    images.forEach((src, i) => {
-        cols[i % numCols].push({ src, originalIndex: i })
-    })
-    return cols
-}
+
 
 export default function Gallery() {
+    let pathname = usePathname()
     const containerRef = useRef(null)
     const subRef = useRef(null)
 
@@ -31,29 +25,18 @@ export default function Gallery() {
         '/image/7.webp', '/image/8.webp', '/image/9.webp',
     ]
 
-    // 3 columns on md+, 2 on sm, 1 on mobile
-    const col1 = distributeIntoColumns(images, 1)
-    const col2 = distributeIntoColumns(images, 2)
-    const col3 = distributeIntoColumns(images, 3)
-    const col4 = distributeIntoColumns(images, 4)
 
-    useEffect(() => {
+   useLayoutEffect(() => {
         let ctx
-
-        const init = async () => {
-            await waitForFontsReady()
-
+let split
+       
             ctx = gsap.context(() => {
-                const split = new SplitText(subRef.current, {
-                    type: 'lines,words',
+         split = new SplitText(subRef.current, {
+                    type: 'words',
                     linesClass: 'line',
                 })
 
-                split.lines.forEach((line) => {
-                    line.style.overflow = 'hidden'
-                    line.style.paddingBottom = '4px'
-                })
-
+                
                 gsap.from(split.words, {
                     opacity: 0,
                     y: 28,
@@ -62,20 +45,26 @@ export default function Gallery() {
                     stagger: 0.04,
                     scrollTrigger: {
                         trigger: subRef.current,
-                        start: 'top 90%',
-                        markers: true
+                        start: 'top 85%',
                     },
                 })
 
-                gsap.set('.gallery-card', { opacity: 0 })
 
-                ScrollTrigger.batch('.gallery-card', {
+                const cards = containerRef.current.querySelectorAll('.gallery-card')
+                gsap.set(cards, { opacity: 0, scale: 0.95, filter: 'blur(10px)' })
+
+
+
+
+                ScrollTrigger.batch(cards, {
                     start: 'top 85%',
-                    marker: true,
+                   
                     onEnter: (batch) => {
                         gsap.to(batch, {
                             opacity: 1,
                             scale: 1,
+                            filter: 'blur(0px)',
+                            stagger: 0.15,
                             duration: 0.7,
                             ease: 'power3.out',
                         })
@@ -84,15 +73,38 @@ export default function Gallery() {
             }, containerRef)
 
             setTimeout(() => ScrollTrigger.refresh(), 500)
-        }
+       
 
-        init()
-
-        return () => ctx?.revert()
-    }, [])
+          return () => {
+     
+        ctx?.revert()
+        split?.revert()
+    }
+    }, [pathname])
 
     const renderCard = ({ src, originalIndex }) => (
-        <div key={src} className="gallery-card mb-4 sm:mb-5">
+        <div key={src} className="gallery-card mb-4 sm:mb-5" onMouseMove={(e) => {
+  const el = e.currentTarget
+  const { offsetX, offsetY } = e.nativeEvent
+
+  // create once
+  if (!el._xTo) {
+    el._xTo = gsap.quickTo(el, "x", { duration: 0.3, ease: "power3.out" })
+    el._yTo = gsap.quickTo(el, "y", { duration: 0.3, ease: "power3.out" })
+  }
+
+  // update values (no gsap.to spam)
+  el._xTo((offsetX - el.offsetWidth / 2) / 10)
+  el._yTo((offsetY - el.offsetHeight / 2) / 10)
+}}
+
+
+          onMouseLeave={(e) => {
+  const el = e.currentTarget
+  el._xTo && el._xTo(0)
+  el._yTo && el._yTo(0)
+}}
+            >
             <div className="relative group overflow-hidden rounded-xl">
                 <Image
                     src={src}
@@ -120,38 +132,11 @@ export default function Gallery() {
                 that make our school a dynamic and engaging place for students.
             </P>
 
-            {/* Mobile: 1 col */}
-            <div className="flex gap-4 sm:hidden">
-                {col1.map((col, ci) => (
-                    <div key={ci} className="flex-1 flex flex-col">
-                        {col.map(renderCard)}
-                    </div>
-                ))}
-            </div>
 
-            {/* Tablet: 2 cols */}
-            <div className="hidden sm:flex md:hidden gap-4 sm:gap-5">
-                {col2.map((col, ci) => (
-                    <div key={ci} className="flex-1 flex flex-col">
-                        {col.map(renderCard)}
-                    </div>
-                ))}
-            </div>
 
-            {/* Desktop: 3 cols */}
-            <div className="hidden md:flex lg:hidden gap-4 md:gap-5">
-                {col3.map((col, ci) => (
-                    <div key={ci} className="flex-1 flex flex-col">
-                        {col.map(renderCard)}
-                    </div>
-                ))}
-            </div>
-
-            <div className="hidden lg:flex gap-4 lg:gap-5">
-                {col4.map((col, ci) => (
-                    <div key={ci} className="flex-1 flex flex-col">
-                        {col.map(renderCard)}
-                    </div>
+            <div className=" columns-1  sm:columns-2 md:columns-3  lg:columns-4 gap-4">
+                {images.map((src, index) => (
+                    renderCard({ src, originalIndex: index })
                 ))}
             </div>
         </Section>

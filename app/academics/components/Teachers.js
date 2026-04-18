@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { H2 } from '@/app/ui/H2'
@@ -31,7 +31,7 @@ export default function Teachers() {
   const trackRef = useRef(null)
   const cardsRef = useRef([])
 
-  useEffect(() => {
+useLayoutEffect(() => {
     const update = () => {
       const viewportCenter = window.innerWidth / 2
       const maxDistance = window.innerWidth / 2 + 200 // off-screen buffer

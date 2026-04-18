@@ -1,10 +1,11 @@
 'use client'
 import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitText } from "gsap/SplitText"
 import { useEffect, useRef } from "react"
 
 
-gsap.registerPlugin(SplitText)
+gsap.registerPlugin(SplitText , ScrollTrigger)
 export function H2({ children, className = '' , an=true , style={} }) {
 
 const h2Ref = useRef(null)
@@ -22,7 +23,7 @@ useEffect(()=>{
 
       trigger: h2Ref.current,
       start: "top 85%",
-      markers:true
+    
 
       
     }
@@ -30,7 +31,7 @@ useEffect(()=>{
      
    
     })
-  })
+  } , h2Ref)
 
   return () => ctx.revert()
 
@@ -38,7 +39,7 @@ useEffect(()=>{
   return
 }
 
-})
+}, [])
   return (
     <h2
       ref={h2Ref}

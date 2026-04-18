@@ -15,19 +15,18 @@ const quickLinks = [
 ]
 
 const socials = [
-  { icon: FiFacebook, href: '#', label: 'Facebook', color: 'hover:text-blue-400' },
-  { icon: FiInstagram, href: '#', label: 'Instagram', color: 'hover:text-pink-400' },
-  { icon: FiLinkedin, href: '#', label: 'LinkedIn', color: 'hover:text-blue-300' },
-  { icon: FiYoutube, href: '#', label: 'YouTube', color: 'hover:text-red-400' },
+  { icon: FiFacebook, href: '/', label: 'Facebook', color: 'hover:text-blue-400' },
+  { icon: FiInstagram, href: '/', label: 'Instagram', color: 'hover:text-pink-400' },
+  { icon: FiLinkedin, href: '/', label: 'LinkedIn', color: 'hover:text-blue-300' },
+  { icon: FiYoutube, href: '/', label: 'YouTube', color: 'hover:text-red-400' },
 ]
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 text-gray-400">
+  <footer role="contentinfo" className="bg-gray-950 text-gray-400">
 
       {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 pt-14 pb-10 grid gap-10
-        grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 pt-14 pb-10 grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 
         {/* School Info */}
         <div className="space-y-4">
@@ -42,8 +41,7 @@ export default function Footer() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className={`w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center
-                  transition-all duration-200 hover:bg-white/10 ${color}`}
+                className={`w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center   transition-all duration-200 hover:bg-white/10 ${color}`}
               >
                 <Icon className="text-[1.1rem]" />
               </a>
@@ -59,11 +57,9 @@ export default function Footer() {
               <li key={h}>
                 <Link
                   href={h}
-                  className="text-sm hover:text-white transition-colors duration-200
-                    flex items-center gap-2 group"
+                  className="text-sm hover:text-white transition-colors duration-200  flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--accent)] opacity-0
-                    group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-[var(--accent)] opacity-0   group-hover:opacity-100 transition-opacity" />
                   {label}
                 </Link>
               </li>
@@ -94,20 +90,18 @@ export default function Footer() {
           <p className="text-sm leading-relaxed">
             Join our school family for the 2025–26 academic year.
           </p>
-          <Link href="/admission">
-            <span className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold
-              bg-gradient-to-r from-[#2A1B7F] to-[#D91C6A] text-white
-              hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
+          <Link href="/admission"
+            className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold   bg-gradient-to-r from-[#2A1B7F] to-[#D91C6A] text-white hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
               Apply Now →
-            </span>
+            
           </Link>
         </div>
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-800 py-5 px-6 text-center text-xs text-gray-600">
+      {/* <div className="border-t border-gray-800 py-5 px-6 text-center text-xs text-gray-600">
         © {new Date().getFullYear()} Shree Shivam Vidhyalaya. All rights reserved.
-      </div>
+      </div> */}
     </footer>
   )
 }

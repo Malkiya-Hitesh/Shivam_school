@@ -26,7 +26,7 @@ export default function PageClient() {
         <Gallry />
         <AdmissionCta />
         <Faq />
-        <ContactSection />
+        {/* <ContactSection /> */}
        
       </main>
     </>

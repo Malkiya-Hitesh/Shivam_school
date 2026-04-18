@@ -5,18 +5,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import ResposiveNave from './ResposiveNave';
-import { useEffect, useRef } from 'react';
+import {  useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Rubik } from "next/font/google"
 import Button from '@/app/ui/Button';
-// import NavDropdown from './ui/NavDropdown';
+
+
 const rubik = Rubik({ subsets: ["latin"], weight: ["500", "600", "700"] })
 export default function NavbarClient() {
   const navRef = useRef(null)
 
 
-  const animatedRef = useRef(false)
-  useEffect(() => {
+useLayoutEffect(() => {
    
 
       const ctx = gsap.context(() => {
@@ -61,6 +61,7 @@ export default function NavbarClient() {
           src='/image/logo.png'
           width={100}
           height={100}
+         loading="eager"
           alt='logo'
         />
 

@@ -8,7 +8,7 @@ import AdmissionCta from '../components/section/AdmissionCta'
 
 function page() {
   return (
-    <main>
+    <main className='overflow-hidden'>
       <Hero />
       <Value />
       <Leadership />

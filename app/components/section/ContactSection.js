@@ -19,7 +19,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function ContactSection() {
   const sectionRef = useRef(null)
-  const headingRef = useRef(null)
   const leftRef = useRef(null)
   const rightRef = useRef(null)
   const [loading, setLoading] = useState(false)
@@ -27,13 +26,7 @@ export default function ContactSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(headingRef.current,
-        { y: 40, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: headingRef.current, start: 'top 85%' }
-        }
-      )
+    
 
       gsap.fromTo(leftRef.current,
         { x: -50, opacity: 0 },
@@ -86,7 +79,7 @@ export default function ContactSection() {
 
       <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-        {/* Left — Info */}
+
         <div ref={leftRef} className="flex flex-col gap-8">
           {/* Info cards */}
           <div className="space-y-4">

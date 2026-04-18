@@ -1,13 +1,7 @@
-'use client'
+export const waitForFonts = async () => {
+  if (typeof document === "undefined") return
 
-export function waitForFontsReady() {
-  if (typeof document === 'undefined') {
-    return Promise.resolve()
+  if (document.fonts && document.fonts.ready) {
+    await document.fonts.ready
   }
-
-  if (document.fonts && typeof document.fonts.ready?.then === 'function') {
-    return document.fonts.ready
-  }
-
-  return Promise.resolve()
 }

@@ -6,8 +6,8 @@ import Section from '@/app/ui/Section'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
-
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 gsap.registerPlugin(ScrollTrigger)
 
 const curriculums = [
@@ -38,8 +38,8 @@ function Curiculam() {
   const sectionRef = useRef(null)
   const wrapperRef = useRef(null)
   const cardsRef = useRef([])
-
-  useEffect(() => {
+const pathname = usePathname()
+useLayoutEffect(() => {
     const cards = cardsRef.current
     const wrapper = wrapperRef.current
 
@@ -98,7 +98,7 @@ function Curiculam() {
       window.removeEventListener('load', setHeight)
       ctx.revert()
     }
-  }, [])
+  }, [pathname])
 
   return (
     <Section ref={sectionRef} className='flex flex-col gap-8 bg-[var(--bg-light)]'>

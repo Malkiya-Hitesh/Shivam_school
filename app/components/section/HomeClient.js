@@ -1,84 +1,90 @@
 ﻿'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import Section from '@/app/ui/Section'
 import Button from '@/app/ui/Button'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
-import { waitForFontsReady } from '@/app/lib/waitForFonts'
-import Link from 'next/link'
 
-gsap.registerPlugin(SplitText)
+import Link from 'next/link'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { usePathname } from 'next/navigation'
+gsap.registerPlugin(SplitText, ScrollTrigger)
 
 function HomeClient() {
   const containerRef = useRef(null)
   const titleRef = useRef(null)
-
+  const descRef = useRef(null)
+  let pathname = usePathname()
   const imgRef = useRef(null)
   const buttonRef = useRef(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let ctx
+    let titleSplit, descSplit
 
-    const init = async () => {
-      await waitForFontsReady()
+    if (pathname !== '/') return
+    if (!titleRef.current || !descRef.current) return
 
-      ctx = gsap.context(() => {
-        const tl = gsap.timeline()
+    ctx = gsap.context(() => {
+      const tl = gsap.timeline()
 
-        const titleS = new SplitText(titleRef.current, {
-          type: 'chars words',
-        })
+      titleSplit = new SplitText(titleRef.current, {
+        type: 'chars words',
+      })
 
-        const descS = new SplitText(containerRef.current.querySelector('p'), {
-          type: 'lines, words',
-        })
+      descSplit = new SplitText(descRef.current, {
+        type: 'lines, words',
+      })
 
-        gsap.from(imgRef.current, {
-          scale: 0.7,
-          opacity: 0,
-          duration: 1.5,
-          ease: 'power3.out',
-        })
+      gsap.from(imgRef.current, {
+        scale: 0.7,
+        opacity: 0,
+        duration: 1.5,
+      })
 
-        tl.from(titleS.chars, {
-          y: 60,
-          opacity: 0,
-          stagger: 0.04,
-          duration: 0.8,
-          ease: 'power3.out',
-        })
-
-        tl.from(descS.lines, {
-          y: 60,
-          opacity: 0,
-          stagger: 0.05,
-          duration: 0.8,
-          ease: 'power3.out',
-        }, '-=0.5')
-
-
-
-        gsap.from(buttonRef.current, {
-          y: 40,
-          opacity: 0,
+      tl.from(titleSplit.chars, {
+        y: 60,
+        opacity: 0,
+        stagger: 0.04,
         duration: 0.8,
-         
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: buttonRef.current,
-            start: 'top 85%',
-            markers:true
+        ease: 'power3.out',
+      })
 
-          },
-        })
-      }, containerRef)
+      tl.from(descSplit.lines, {
+        y: 60,
+        opacity: 0,
+        stagger: 0.05,
+        duration: 0.8,
+        ease: 'power3.out',
+
+      }, '-=0.5')
+
+      // ✅ BUTTON BACK
+      gsap.from(buttonRef.current, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: buttonRef.current,
+          start: 'top 85%',
+          invalidateOnRefresh: true,
+        },
+      })
+
+    }, containerRef)
+
+
+
+
+    return () => {
+
+
+      ctx?.revert()
+      titleSplit?.revert()
+      descSplit?.revert()
     }
-
-    init()
-
-    return () => ctx?.revert()
-  }, [])
+  }, [pathname])
 
   return (
     <main
@@ -93,11 +99,11 @@ function HomeClient() {
             Shree Shivam Vidhyalaya
           </h1>
 
-          <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl">
+          <p ref={descRef} className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl">
             At Shree Shivam Vidhyalaya, we nurture young minds and inspire a love for learning. Our school provides quality education with academics and activities, creating a supportive environment where every student can grow and succeed
           </p>
 
-        
+
 
           {/* Action Buttons */}
           <div ref={buttonRef} className="pt-5 sm:pt-7  md:pt-9 lg:pt-12 flex flex-wrap gap-4">
@@ -106,12 +112,12 @@ function HomeClient() {
                 View Results
               </Button>
             </Link>
-            
-             <Link href="/admissions">
 
-            <Button variant="dark">
-              Admissions
-            </Button>
+            <Link href="/admissions">
+
+              <Button variant="dark">
+                Admissions
+              </Button>
             </Link>
           </div>
 
@@ -122,6 +128,7 @@ function HomeClient() {
             className="w-full h-auto object-cover rounded-xl shadow-lg"
             src="/image/hero_4.webp"
             alt="School Building"
+            loading="eager"
           />
         </div>
 

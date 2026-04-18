@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { HiXMark } from "react-icons/hi2"
 import gsap from 'gsap'
@@ -14,7 +14,7 @@ function ResposiveNave() {
 
   const toggleMenu = () => setMenu(prev => !prev)
 
-  useEffect(() => {
+ useLayoutEffect(() => {
     if (!menu) return
 
     const ctx = gsap.context(() => {

@@ -71,9 +71,9 @@ export default function ContactSection() {
   return (
     <Section className="flex flex-col  bg-[var(--bg-light)] overflow-hidden ">
      
-       <H2 className=' text-center  my-5'>Contact Us</H2>
+       <H2 className=' text-center  my-5'>સંપર્ક કરો </H2>
         <P className="text-center my-6 ">
-          Have questions or want to schedule a visit? We&apos;d love to hear from you.
+         કોઈ પ્રશ્ન છે કે શાળાની મુલાકાત લેવી છે? અમે તમારી સાથે વાત કરવા હંમેશા તૈયાર છીએ.
         </P>
      
 
@@ -83,16 +83,16 @@ export default function ContactSection() {
         <div ref={leftRef} className="flex flex-col gap-8">
           {/* Info cards */}
           <div className="space-y-4">
-            <ContactInfoCard icon={FiMapPin} title="Address" detail="Kamlapur, Gujarat" color="bg-blue-50 text-blue-600" />
-            <ContactInfoCard icon={FiPhone} title="Phone" detail="+91 00000 00000" color="bg-green-50 text-green-600" />
-            <ContactInfoCard icon={FiMail} title="Email" detail="info@sivam.edu.in" color="bg-pink-50 text-pink-600" />
+            <ContactInfoCard icon={FiMapPin} title="સરનામું" detail="કામળૂર, જસદણ, રાજકોટ, ગુજરાત" color="bg-blue-50 text-blue-600" />
+            <ContactInfoCard icon={FiPhone} title="ફોન" detail="+91 00000 00000" color="bg-green-50 text-green-600" />
+            <ContactInfoCard icon={FiMail} title="ઈમેઈલ" detail="info@sivam.edu.in" color="bg-pink-50 text-pink-600" />
           </div>
 
           {/* Map placeholder */}
           <div className="rounded-2xl overflow-hidden h-48 bg-[var(--bg-primary-soft)] flex items-center justify-center">
             <div className="text-center space-y-2">
               <FiMapPin className="text-3xl text-[var(--primary)] mx-auto" />
-              <p className="text-sm text-[var(--text-muted)] font-medium">Kamlapur, Gujarat</p>
+              <p className="text-sm text-[var(--text-muted)] font-medium">કામળૂર, ગુજરાત</p>
             </div>
           </div>
         </div>
@@ -100,18 +100,18 @@ export default function ContactSection() {
         {/* Right — Form */}
         <div ref={rightRef}>
           <form onSubmit={handleSubmit} className='bg-white rounded-2xl shadow-[0_4px_24px_rgba(42,27,127,0.1)] p-6 sm:p-8 space-y-4' >
-            <h3 className="text-[1.2rem] font-bold text-[var(--primary)] mb-2">Send a Message</h3>
+            <h3 className="text-[1.2rem] font-bold text-[var(--primary)] mb-2">સંદેશ મોકલો</h3>
 
-            <ContactInput name="name" placeholder="Your Name" type="text" />
-            <ContactInput name="email" placeholder="Email Address" type="email" />
-            <ContactInput name="number" placeholder="Phone Number" type="tel" />
+            <ContactInput name="name" placeholder="તમારું નામ" type="text" />
+            <ContactInput name="email" placeholder="ઈમેઈલ સરનામું" type="email" />
+            <ContactInput name="number" placeholder="ફોન નંબર" type="tel" />
 
             <textarea
               name="message"
               required
               rows={4}
               className= 'w-full p-3 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/30 focus:border-[var(--primary)] transition-all duration-200 text-[0.95rem] placeholder:text-gray-400'
-              placeholder="Your Message"
+              placeholder="તમારો સંદેશ અહીં લખો..."
             />
 
             <button
@@ -121,12 +121,12 @@ export default function ContactSection() {
               }`}
             >
               <FiSend className={loading ? '' : 'animate-none'} />
-              {loading ? 'Sending...' : 'Send Message'}
+              {loading ? 'મોકલાઈ રહ્યો છે...' : 'સંદેશ મોકલો'}
             </button>
 
             {status === 'success' && (
               <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-center">
-                <p className="text-green-700 font-semibold text-sm">✅ Message sent successfully! We&apos;ll get back to you soon.</p>
+                <p className="text-green-700 font-semibold text-sm"> તમારો સંદેશ મળી ગયો! અમે જલ્દી જ તમારો સંપર્ક કરીશું.</p>
               </div>
             )}
           </form>

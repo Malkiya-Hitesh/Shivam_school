@@ -13,31 +13,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const leaders = [
   {
-    name: "Harsh Vandamna Sharma",
-    role: "Founder",
+    name: "વલ્લભભાઈ રામાણી",
+    role: "ટ્રસ્ટી",
     image: "/image/3.webp",
-    bio: `Our institution is guided by experienced educators and trustees
-    who are committed to shaping the future of our students. Our institution
-    is guided by experienced educators and trustees who are committed to
-    shaping the future of our students.`,
+    bio: `શ્રી વલ્લભભાઈ રામાણીની દૂરંદેશી અને સમર્પણથી ૧૬ વર્ષ પહેલાં આ શૈક્ષણિક સ્વપ્નની શરૂઆત થઈ. તેમના નેતૃત્વ હેઠળ શ્રી શિવમ અને શ્રી વજીબા વિદ્યાલય આજે કામળૂર, જસદણ, રાજકોટ વિસ્તારમાં ૪૫૦ થી વધુ વિદ્યાર્થીઓના ઉજ્જવળ ભવિષ્ય માટે કાર્યરત છે.`,
   },
   {
-    name: "Harsh Vandamna Sharma",
-    role: "Principal",
+    name: "ચિરાગ રામાણી",
+    role: "નિયામક",
     image: "/image/2.webp",
-    bio: `Our institution is guided by experienced educators and trustees
-    who are committed to shaping the future of our students. Our institution
-    is guided by experienced educators and trustees who are committed to
-    shaping the future of our students.`,
+    bio: `શ્રી ચિરાગ રામાણી શાળાના દૈનિક સંચાલન અને શૈક્ષણિક ગુણવત્તાની જવાબદારી સંભાળે છે. ૨૦ અનુભવી શિક્ષકોની ટીમ સાથે તેઓ દરેક વિદ્યાર્થીના સર્વાંગી વિકાસ માટે અથાક પ્રયત્નશીલ છે.`,
   },
   {
-    name: "Harsh Vandamna Sharma",
-    role: "Trustee",
+    name: "જયેશ ધોળારિયા",
+    role: "મેનેજમેન્ટ ટ્રસ્ટી",
     image: "/image/4.webp",
-    bio: `Our institution is guided by experienced educators and trustees
-    who are committed to shaping the future of our students. Our institution
-    is guided by experienced educators and trustees who are committed to
-    shaping the future of our students.`,
+    bio: `શ્રી જયેશ ધોળારિયા શાળાના મેનેજમેન્ટ ટ્રસ્ટી તરીકે શાળાના વિકાસ અને વ્યવસ્થાપનમાં મહત્વની ભૂમિકા ભજવે છે. તેમના પ્રયાસોથી શાળામાં સ્માર્ટ ક્લાસ, કોમ્પ્યુટર લેબ અને પરિવહન જેવી આધુનિક સુવિધાઓ શક્ય બની છે.`,
   },
 ];
 
@@ -95,10 +86,9 @@ useLayoutEffect(() => {
 
   return (
     <Section ref={sectionRef} className="flex flex-col gap-8 bg-[var(--bg-light)] overflow-x-hidden ">
-      <H2 className="text-center">Leadership & Management</H2>
+      <H2 className="text-center">સંચાલન</H2>
       <P className="text-center max-w-2xl mx-auto p-text">
-        Our institution is guided by experienced educators and trustees
-        who are committed to shaping the future of our students.
+        શ્રી શિવમ અને શ્રી વજીબા વિદ્યાલયનું સંચાલન એવા અનુભવી અને સમર્પિત વ્યક્તિઓના હાથમાં છે — જેઓ માત્ર શાળા નથી ચલાવતા, પણ દરેક બાળકના ઉજ્જવળ ભવિષ્યનું સ્વપ્ન જુએ છે અને તે પૂરું કરવા માટે અથાક કાર્યરત છે.
       </P>
 
      

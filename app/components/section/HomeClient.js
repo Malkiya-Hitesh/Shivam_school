@@ -9,6 +9,7 @@ import { SplitText } from 'gsap/SplitText'
 import Link from 'next/link'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePathname } from 'next/navigation'
+import { useLanguage } from '@/app/context/LanguageContext'
 gsap.registerPlugin(SplitText, ScrollTrigger)
 
 function HomeClient() {
@@ -16,6 +17,7 @@ function HomeClient() {
   const titleRef = useRef(null)
   const descRef = useRef(null)
   let pathname = usePathname()
+  const { t } = useLanguage()
   const imgRef = useRef(null)
   const buttonRef = useRef(null)
 
@@ -96,11 +98,11 @@ function HomeClient() {
         <div className=" lg:space-y-6 md:space-y-4 space-y-3">
 
           <h1 ref={titleRef} className="text-5xl sm:text-5xl lg:text-6xl   text-[var(--text-primary)] font-[900] leading-tight ">
-            Shree Shivam Vidhyalaya
+       શ્રી શિવમ વિદ્યાલય
           </h1>
 
           <p ref={descRef} className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl">
-            At Shree Shivam Vidhyalaya, we nurture young minds and inspire a love for learning. Our school provides quality education with academics and activities, creating a supportive environment where every student can grow and succeed
+         શ્રી શિવમ વિદ્યાલયમાં અમે બાળકોની પ્રતિભાને ખીલવીએ છીએ અને શિક્ષણ પ્રત્યે પ્રેમ જગાડીએ છીએ. અમારી શાળા ગુજરાત બોર્ડ (GSEB) સાથે સંલગ્ન છે અને ધોરણ ૧ થી ૮ સુધી ગુણવત્તાસભર ગુજરાતી માધ્યમનું શિક્ષણ આપે છે. સ્માર્ટ ક્લાસ, કોમ્પ્યુટર લેબ, રમતગમત મેદાન અને પરિવહન સુવિધા સાથે અમે દરેક વિદ્યાર્થીના ઉજ્જવળ ભવિષ્ય માટે પ્રતિબદ્ધ છીએ.
           </p>
 
 

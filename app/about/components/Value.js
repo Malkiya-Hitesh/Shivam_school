@@ -71,23 +71,23 @@ export default function Value() {
   return () => ctx.revert();
 }, []);
 
-  const items = [
-    {
-      label: "Mission",
-      text: "To provide quality education through dedicated teachers and modern learning methods that help students grow.",
-      icon: <TbTargetArrow className="w-10 h-10 md:w-12 md:h-12 text-[#2A1B7F]" />,
-    },
-    {
-      label: "Vision",
-      text: "A nurturing environment where students develop knowledge, creativity, and strong values for lifelong success.",
-      icon: <HiOutlineLightBulb className="w-10 h-10 md:w-12 md:h-12 text-[#2A1B7F]" />,
-    },
-    {
-      label: "Values",
-      text: "Founded on discipline, character, and a strong foundation for knowledge development and personal growth.",
-      icon: <FaUniversity className="w-10 h-10 md:w-12 md:h-12 text-[#2A1B7F]" />,
-    },
-  ];
+ const items = [
+  {
+    label: "મિશન",
+    text: "૨૦ સમર્પિત શિક્ષકો અને સ્માર્ટ ક્લાસ જેવી આધુનિક સુવિધાઓ દ્વારા ગુજરાતી માધ્યમમાં ગુણવત્તાસભર શિક્ષણ આપવું — જેથી દરેક વિદ્યાર્થી શૈક્ષણિક, સામાજિક અને વ્યક્તિગત રીતે સક્ષમ બને.",
+    icon: <TbTargetArrow className="w-10 h-10 md:w-12 md:h-12 text-[#2A1B7F]" />,
+  },
+  {
+    label: "વિઝન",
+    text: "ધોરણ ૧ થી ૧૨ સુધીના દરેક વિદ્યાર્થીને એવું વાતાવરણ આપવું — જ્યાં જ્ઞાન, સર્જનાત્મકતા અને સંસ્કાર સાથે મળીને ઉજ્જવળ ભવિષ્યની નક્કર શરૂઆત થાય.",
+    icon: <HiOutlineLightBulb className="w-10 h-10 md:w-12 md:h-12 text-[#2A1B7F]" />,
+  },
+  {
+    label: "મૂલ્યો",
+    text: "શ્રી વલ્લભભાઈ રામાણીના પાયામાં રહેલા સિદ્ધાંતો — શિસ્ત, પ્રામાણિકતા અને સંસ્કાર — આ ત્રણ મૂલ્યો અમારી શાળાની દરેક પ્રવૃત્તિ અને શિક્ષણના કેન્દ્રમાં છે.",
+    icon: <FaUniversity className="w-10 h-10 md:w-12 md:h-12 text-[#2A1B7F]" />,
+  },
+];
 
   return (
     <Section ref={sectionRef}>

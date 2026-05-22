@@ -32,16 +32,16 @@ return () => ctx.revert()
      
       <div className="relative flex flex-col items-center justify-center text-center px-6 py-28 md:py-36 lg:py-44 text-white">
         
-       <Button   variant='outline'> what we are </Button>
+       <Button   variant='outline'> અમારા વિશે </Button>
 
         
         <H2  style={{ color: 'var(--text-w)' }} className="mt-6 max-w-4xl">
-          shivam school - Where Learning Meets Excellence
+         શ્રી શિવમ વિદ્યાલય — જ્યાં જ્ઞાન અને સંસ્કારનો સંગમ થાય છે
         </H2>
 
         {/* Supporting Line */}
         <P  ref={descRef} className="mt-6 max-w-2xl text-white/90 ">
-          We are committed to providing holistic education that empowers students with knowledge, character, and confidence to succeed in life.
+          ૧૬ વર્ષથી ટ્રસ્ટી શ્રી વલ્લભભાઈ રામાણી અને નિયામક શ્રી ચિરાગ રામાણીના માર્ગદર્શન હેઠળ અમે ૪૫૦ થી વધુ વિદ્યાર્થીઓને માત્ર ભણાવતા નથી — પણ તેમને જીવન જીવતાં શીખવીએ છીએ. જ્ઞાન, સંસ્કાર અને આત્મવિશ્વાસ સાથે દરેક બાળક અહીંથી ઉજ્જવળ ભવિષ્ય તરફ આગળ વધે છે.
         </P>
 
         <Button  ref={ctaRef}   variant='primary' className='mt-8'>

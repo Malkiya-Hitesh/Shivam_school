@@ -12,23 +12,23 @@ gsap.registerPlugin(ScrollTrigger)
 
 const curriculums = [
   {
-    title: 'Primary',
-    buttons: ['std : 1 to 5', 'std : 6 to 10'],
-    desc: 'Our primary curriculum focuses on building a strong foundation in core subjects such as mathematics, language arts, science, and social studies.',
+    title: 'પ્રાથમિક વિભાગ',
+    buttons: ['ધોરણ : ૧ થી ૫', 'ધોરણ : ૬ થી ૮'],
+    desc: 'શ્રી શિવમ વિદ્યાલયમાં પ્રાથમિક વિભાગ (ધો. ૧ થી ૮) માં ગણિત, ગુજરાતી, વિજ્ઞાન અને સામાજિક વિજ્ઞાનનો મજબૂત પાયો નાખવામાં આવે છે. સ્માર્ટ ક્લાસ અને પ્રવૃત્તિ આધારિત શિક્ષણ દ્વારા બાળકમાં શીખવાની જિજ્ઞાસા જગાડવામાં આવે છે.',
     image: '/image/1.webp',
     reverse: false,
   },
   {
-    title: 'Secondary',
-    buttons: ['std : 6 to 9', 'age : 10 to 14'],
-    desc: 'Our secondary curriculum builds on the foundation established in primary school, offering more advanced courses in a variety of subjects.',
+    title: 'માધ્યમિક વિભાગ',
+    buttons: ['ધોરણ : ૯', 'ધોરણ : ૧૦'],
+    desc: 'શ્રી વજીબા વિદ્યાલયમાં માધ્યમિક વિભાગ (ધો. ૯-૧૦) માં GSEB બોર્ડની પરીક્ષા માટે સંપૂર્ણ તૈયારી કરાવવામાં આવે છે. ૨૦ અનુભવી શિક્ષકો દ્વારા દરેક વિષયની ઊંડી સમજ આપવામાં આવે છે.',
     image: '/image/1.webp',
     reverse: true,
   },
   {
-    title: 'Higher Secondary',
-    buttons: ['std : 10 to 12', 'age : 14 to 17'],
-    desc: 'Our higher secondary curriculum prepares students for university and beyond, with a focus on critical thinking and independent learning.',
+    title: 'ઉચ્ચ માધ્યમિક વિભાગ',
+    buttons: ['ધોરણ : ૧૧', 'ધોરણ : ૧૨ આર્ટ્સ'],
+    desc: 'શ્રી વજીબા વિદ્યાલયમાં ઉચ્ચ માધ્યમિક આર્ટ્સ વિભાગ (ધો. ૧૧-૧૨) માં વિદ્યાર્થીઓને ઉચ્ચ શિક્ષણ અને કારકિર્દી માટે સક્ષમ બનાવવામાં આવે છે. વક્તૃત્વ, નેતૃત્વ અને વ્યક્તિત્વ વિકાસ પર વિશેષ ભાર મૂકવામાં આવે છે.',
     image: '/image/1.webp',
     reverse: false,
   },
@@ -102,12 +102,11 @@ useLayoutEffect(() => {
 
   return (
     <Section ref={sectionRef} className='flex flex-col gap-8 bg-[var(--bg-light)]'>
-      <H2 className='text-center'>Curiculam</H2>
+      <H2 className='text-center'>કાર્યક્ષેત્ર</H2>
       <P className='text-center mt-4 p-text'>
-        We offer a comprehensive curriculum that covers a wide range of subjects,
-        including mathematics, language arts, science, literature, history, and the arts.
+       શ્રી શિવમ અને શ્રી વજીબા વિદ્યાલયમાં GSEB ગુજરાતી માધ્યમ આધારિત અભ્યાસક્રમ ધોરણ ૧ થી ૧૨ સુધી વ્યવસ્થિત રીતે ગોઠવવામાં આવ્યો છે — જેમાં ગણિત, વિજ્ઞાન, ભાષા, સામાજિક વિજ્ઞાન અને કળા સહિત સર્વાંગી વિકાસ પર ભાર મૂકવામાં આવે છે.
       </P>
-
+                                                     
       <div ref={wrapperRef} className='relative w-full overflow-hidden'>
         {curriculums.map((item, index) => (
           <div

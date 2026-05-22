@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { FiAlertCircle } from "react-icons/fi";
-import Button from "./components/ui2/Button";
 
 export default function NotFound() {
   return (
@@ -36,18 +35,18 @@ export default function NotFound() {
 
         {/* Buttons */}
         <div className="flex gap-4 mt-6 justify-center">
-          <Button
+          {/* <Button
           theme='dark'
             onClick={() => (window.location.href = "/")}
           >
-            Go Home
-          </Button>
+            Go Home */}
+          {/* </Button>
           <Button
           theme="dark"
             onClick={() => window.location.reload()}
           >
             Refresh Page
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>

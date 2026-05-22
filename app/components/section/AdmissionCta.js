@@ -9,10 +9,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { useLanguage } from '@/app/context/LanguageContext'
 
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 function AdmissionCta() {
+  const { t } = useLanguage()
   const headingRef = useRef(null)
   const paraRef = useRef(null)
   const btn1Ref = useRef(null)
@@ -122,13 +124,12 @@ function AdmissionCta() {
 
       <div style={{ overflow: 'hidden', paddingBottom: '6px' }}>
         <H2 >
-          Admissions Open
+         પ્રવેશ કાર્ય શરૂ છે
         </H2>
       </div>
 
       <P ref={paraRef} className="max-w-xl mx-auto mt-4">
-        Join Shree Shivam Vidhyalaya and give your child the opportunity
-        to learn, grow, and succeed in a supportive environment.
+       તમારા બાળકને શ્રી શિવમ વિદ્યાલય અથવા શ્રી વજીબા વિદ્યાલયમાં પ્રવેશ અપાવો અને ૧૬ વર્ષના અનુભવી શિક્ષણ પરિવારનો હિસ્સો બનો — જ્યાં ૨૦ સમર્પિત શિક્ષકો તમારા બાળકના ઉજ્જવળ ભવિષ્ય માટે દરરોજ કાર્યરત છે.
       </P>
 
       <div className="mt-6 flex justify-center gap-4">

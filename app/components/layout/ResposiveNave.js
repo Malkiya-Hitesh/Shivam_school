@@ -4,9 +4,9 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { HiXMark } from "react-icons/hi2"
 import gsap from 'gsap'
 import Link from 'next/link'
-import NavButoon from '../ui2/NavButoon'
 import { NavLink } from './NavbarClient'
-import Button from '../ui2/Button'
+import Button from '@/app/ui/Button'
+
 
 function ResposiveNave() {
   const [menu, setMenu] = useState(false)

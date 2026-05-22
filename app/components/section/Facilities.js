@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Section from '@/app/ui/Section'
@@ -10,18 +10,11 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 gsap.registerPlugin(ScrollTrigger)
 
-export default function Facilities() {
+export default function Facilities({ facilities=[] }) {
   let pathname = usePathname()
   const cardsRef = useRef([])  // ✅ Array of refs instead of single ref
   const sectionRef = useRef(null)
-  const facilities = [
-    { title: 'Smart Classrooms', desc: 'Digitally enabled classrooms for interactive and effective learning.' },
-    { title: 'Science & Computer Labs', desc: 'Well-equipped labs encouraging experimentation and innovation.' },
-    { title: 'Library', desc: 'A rich collection of academic and reference resources.' },
-    { title: 'Sports Facilities', desc: 'Indoor and outdoor sports for physical development.' },
-    { title: 'Transport', desc: 'Safe and reliable transportation with trained staff.' },
-    { title: 'Safety & Security', desc: 'CCTV surveillance and disciplined campus environment.' },
-  ]
+  
 
   useLayoutEffect(() => {
     let ctx
@@ -59,9 +52,9 @@ export default function Facilities() {
 
   return (
     <Section className="">
-      <H2 className="text-center mb-10">Our Facilities</H2>
+      <H2 className="text-center mb-10"> સુવિધાઓ</H2>
       <P className="text-center mb-12 text-gray-600">
-        We provide state-of-the-art facilities to support our students&apos; academic and extracurricular growth.
+        શ્રી શિવમ અને શ્રી વજીબા વિદ્યાલયમાં વિદ્યાર્થીઓના સર્વાંગી વિકાસ માટે આધુનિક સ્માર્ટ ક્લાસ, કોમ્પ્યુટર લેબ, વિશાળ રમતગમત મેદાન, સમૃદ્ધ પુસ્તકાલય અને સુરક્ષિત પરિવહન સેવા ઉપલબ્ધ છે.
       </P>
 
       <div ref={sectionRef} className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -72,8 +65,8 @@ export default function Facilities() {
           >
             <div className=" rounded-lg shadow-md p-5 h-full flex flex-col items-center text-center bg-[var(--bg-light)]">
               <div className="relative w-full aspect-[4/3] mb-4">
-                <Image
-                  src="/image/hero_4.webp"
+                <img
+                  src={facility.img}
                   alt={facility.title}
                   fill
                   sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"

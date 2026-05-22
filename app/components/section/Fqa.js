@@ -4,30 +4,46 @@ import React, { useRef, useState, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import Span from '../ui2/Span'
-import P from '../ui2/P'
+import{ Span} from '@/app/ui/Span'
 
 import { H2 } from '@/app/ui/H2'
 import Section from '@/app/ui/Section'
 import { usePathname } from 'next/navigation'
+import { P } from '@/app/ui/P'
 gsap.registerPlugin(ScrollTrigger)
 
 const faqs = [
   {
-    q: 'What is the admission process?',
-    a: 'Parents can apply online or visit the school campus. Our team will guide you through the complete admission process.',
+    q: "શ્રી શિવમ વિદ્યાલયમાં કયા ધોરણ સુધી અભ્યાસ થાય છે?",
+    a: "શ્રી શિવમ વિદ્યાલયમાં ધોરણ ૧ થી ૮ સુધી અને શ્રી વજીબા વિદ્યાલયમાં ધોરણ ૯ થી ૧૨ આર્ટ્સ સુધી અભ્યાસ થાય છે.",
   },
   {
-    q: 'Which curriculum does the school follow?',
-    a: 'We follow a well-structured curriculum focusing on academics, discipline, and overall student development.',
+    q: "શાળાનું માધ્યમ કયું છે?",
+    a: "અમારી શાળા સંપૂર્ણ ગુજરાતી માધ્યમમાં છે અને ગુજરાત બોર્ડ (GSEB) સાથે સંલગ્ન છે.",
   },
   {
-    q: 'Are transport facilities available?',
-    a: 'Yes, safe and reliable transport facilities are available with GPS-enabled buses.',
+    q: "શાળામાં પ્રવેશ કેવી રીતે મેળવવો?",
+    a: "પ્રવેશ માટે શાળાની વેબસાઇટ પર ઓનલાઇન અરજી કરો અથવા સીધા શાળાએ આવીને સંપર્ક કરો. અમારી ટીમ તમને સંપૂર્ણ માર્ગદર્શન આપશે.",
   },
   {
-    q: 'Does the school provide extracurricular activities?',
-    a: 'Yes, we encourage sports, cultural activities, and skill-based learning.',
+    q: "શાળામાં કઈ કઈ સુવિધાઓ છે?",
+    a: "અમારી શાળામાં સ્માર્ટ ક્લાસ, કોમ્પ્યુટર લેબ, વિશાળ રમતગમત મેદાન, સમૃદ્ધ પુસ્તકાલય અને સુરક્ષિત પરિવહન સેવા ઉપલબ્ધ છે.",
+  },
+  {
+    q: "શાળાની સ્થાપના ક્યારે થઈ?",
+    a: "અમારી શાળાની સ્થાપના ૧૬ વર્ષ પહેલાં થઈ હતી. ત્યારથી આજ સુધી અમે ૪૫૦ થી વધુ વિદ્યાર્થીઓને ગુણવત્તાસભર શિક્ષણ આપી રહ્યા છીએ.",
+  },
+  {
+    q: "શાળામાં કેટલા શિક્ષકો છે?",
+    a: "અમારી શાળામાં ૨૦ અનુભવી અને સમર્પિત શિક્ષકો છે જે દરેક વિદ્યાર્થીના વ્યક્તિગત વિકાસ પર ધ્યાન આપે છે.",
+  },
+  {
+    q: "શાળા ક્યાં આવેલી છે?",
+    a: "અમારી શાળા કામળૂર, જસદણ, રાજકોટ, ગુજરાતમાં આવેલી છે. વિદ્યાર્થીઓ માટે પરિવહન સુવિધા પણ ઉપલબ્ધ છે.",
+  },
+  {
+    q: "શાળાનું સંચાલન કોણ કરે છે?",
+    a: "શાળાનું સંચાલન ટ્રસ્ટી શ્રી વલ્લભભાઈ રામાણી, નિયામક શ્રી ચિરાગ રામાણી અને મેનેજમેન્ટ ટ્રસ્ટી શ્રી જયેશ ધોળારિયાના કુશળ નેતૃત્વ હેઠળ થાય છે.",
   },
 ]
 
@@ -119,7 +135,7 @@ export default function Faq() {
   return (
 
     <Section ref={sectionRef} className='flex flex-col items-center  gap-8'>
-      <H2 className={"text-center"} > Frequently Asked Questions </H2>
+      <H2 className={"text-center"} > વારંવાર પૂછાતા પ્રશ્નો </H2>
 
 
       <div
@@ -135,7 +151,7 @@ export default function Faq() {
               onClick={() => toggleItem(i)}
               className="w-full flex justify-between items-center p-5 text-left"
             >
-              <Span className={"font-semibold"} data={item.q} />
+              <Span className={"font-semibold"} >{item.q}</Span>
               <span className="">
                 {active === i ? '−' : '+'}
               </span>
@@ -145,7 +161,7 @@ export default function Faq() {
               ref={el => (contentRefs.current[i] = el)}
               className="px-5 text-[13px] sm:text-[14px] md:text-[16px]  lg:text-[18px] xl:text-[20px] text-gray-600 overflow-hidden"
             >
-              <P className={"pb-4"} data={item.a} />
+              <P className={"pb-4"} >{item.a}</P>
             </div>
           </div>
         ))}

@@ -3,6 +3,8 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import { LanguageProvider } from "./context/LanguageContext";
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,11 +26,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning >
       <body>
+        <LanguageProvider>
          <Navbar />
        
          
           {children}
        <Footer />
+       </LanguageProvider>
       </body>
     </html>
   );

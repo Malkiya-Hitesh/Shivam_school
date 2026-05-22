@@ -12,7 +12,7 @@ import { usePathname } from 'next/navigation'
 
 
 gsap.registerPlugin(SplitText, ScrollTrigger)
-function Achievement() {
+function Achievement({cards}) {
   const pathname = usePathname()
   const pref = useRef(null)
   const containerRef = useRef(null)
@@ -51,10 +51,10 @@ function Achievement() {
 
   return (
     <Section ref={containerRef} className='bg-[var(--bg-light)] text-center flex flex-col xl:gap-16 lg:gap-12 md:gap-10 gap-8  '>
-      <H2>Achievements</H2>
+      <H2>ગૌરવની પળો</H2>
       <div ref={pref}>
-        <P    > Our students have achieved remarkable success in various fields, including academics, sports, and arts. We take pride in their accomplishments and celebrate their hard work and dedication.</P>  </div>
-      <AchievementCard />
+        <P    > શ્રી શિવમ વિદ્યાલયના વિદ્યાર્થીઓએ ૧૬ વર્ષની સફરમાં અભ્યાસ, રમતગમત અને સાંસ્કૃતિક ક્ષેત્રે અનેક ગૌરવપ્રદ સિદ્ધિઓ હાંસલ કરી છે. ૨૦ સમર્પિત શિક્ષકોના માર્ગદર્શન અને ટ્રસ્ટ મેનેજમેન્ટના પ્રોત્સાહનથી અમારા વિદ્યાર્થીઓ દર વર્ષે નવી ઊંચાઈઓ સર કરે છે — અને આ જ અમારું સૌથી મોટું ગૌરવ છે.</P>  </div>
+      <AchievementCard cards={cards} />
     </Section>
   )
 }

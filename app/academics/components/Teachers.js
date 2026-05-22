@@ -8,26 +8,9 @@ import Section from '@/app/ui/Section'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const teachers = [
-  { name: 'Anjali Patel', subject: 'Maths', img: '/image/t1.avif' },
-  { name: 'Rahul Mehta', subject: 'Science', img: '/image/t1.avif' },
-  { name: 'Kavita Shah', subject: 'English', img: '/image/t1.avif' },
-  { name: 'Suresh Joshi', subject: 'Computer', img: '/image/t1.avif' },
-  { name: 'Neha Desai', subject: 'Biology', img: '/image/t1.avif' },
-  { name: 'Amit Trivedi', subject: 'Physics', img: '/image/t1.avif' },
-  { name: 'Pooja Rana', subject: 'Gujarati', img: '/image/t1.avif' },
-  { name: 'Vikas Parmar', subject: 'History', img: '/image/t1.avif' },
-  { name: 'Anjali Patel', subject: 'Maths', img: '/image/t1.avif' },
-  { name: 'Rahul Mehta', subject: 'Science', img: '/image/t1.avif' },
-  { name: 'Kavita Shah', subject: 'English', img: '/image/t1.avif' },
-  { name: 'Suresh Joshi', subject: 'Computer', img: '/image/t1.avif' },
-  { name: 'Neha Desai', subject: 'Biology', img: '/image/t1.avif' },
-  { name: 'Amit Trivedi', subject: 'Physics', img: '/image/t1.avif' },
-  { name: 'Pooja Rana', subject: 'Gujarati', img: '/image/t1.avif' },
-  { name: 'Vikas Parmar', subject: 'History', img: '/image/t1.avif' },
-]
 
-export default function Teachers() {
+
+export default function Teachers({ teachers =[]}) {
   const trackRef = useRef(null)
   const cardsRef = useRef([])
 

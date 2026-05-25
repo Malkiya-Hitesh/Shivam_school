@@ -233,7 +233,7 @@ export default function AdmissionForm() {
   }
 
   return (
-    <div
+    <div  id="admissions"
       style={{
         minHeight: "100vh",
         background: "linear-gradient(135deg, #eef2ff 0%, #f8faff 60%, #f0fdf4 100%)",

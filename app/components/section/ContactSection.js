@@ -3,9 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 
-const SHEET_URL =
-  'https://script.google.com/macros/s/AKfycbx4vFO4VGkHkMa1V3sisaOz2_30hWJmYHZWhOw0NTeCRSUI0ktuYI_afLqdzc9LYHFl/exec'
-
+const CONTACT_SHEET_URL = process.env.NEXT_PUBLIC_CONTACT_SHEET_URL
 export default function HomeContact() {
   const [form, setForm] = useState({ name: '', phone: '', message: '' })
   const [errors, setErrors] = useState({})
@@ -38,7 +36,7 @@ export default function HomeContact() {
     if (Object.values(newErr).some(Boolean)) return
     setStatus('loading')
     try {
-      await fetch(SHEET_URL, {
+      await fetch(CONTACT_SHEET_URL, {
         method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ timestamp: new Date().toLocaleString('en-IN'), ...form, type: 'home-contact' }),
@@ -147,12 +145,12 @@ export default function HomeContact() {
                 અમારી ટીમ સ્વાગત કરે છે
               </h3>
               <p style={{ fontSize: 13, color: '#bfdbfe', lineHeight: 1.7, margin: '0 0 20px' }}>
-                સોમ–શનિ · સવારે ૮:૦૦ – સાંજે ૫:૩૦
+                સોમ–શનિ · સવારે 9:00 – સાંજે 3:00
               </p>
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: 18, display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {[
-                  { icon: '📞', text: '+91 98765 43210', sub: 'શ્રી શિવમ વિદ્યાલય' },
-                  { icon: '📞', text: '+91 98765 43211', sub: 'શ્રી વજીબા વિદ્યાલય' },
+                  { icon: '📞', text: '+91 9601173130', sub: 'શ્રી શિવમ્ વિદ્યાલય' },
+                  { icon: '📞', text: '+91 9904030919', sub: 'શ્રી વજીબા વિદ્યાલય' },
                   { icon: '📍', text: 'કામળૂર, જસદણ, રાજકોટ', sub: 'ગુજરાત, ભારત' },
                 ].map((c, i) => (
                   <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
@@ -172,7 +170,7 @@ export default function HomeContact() {
 
             {/* Quick action pills */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+              <a href="https://wa.me/9904030919" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                 <div className="hc-wa" style={{
                   background: '#25d366', borderRadius: 14,
                   padding: '14px 16px', textAlign: 'center',
@@ -210,7 +208,7 @@ export default function HomeContact() {
                   <div style={{ color: '#64748b', fontSize: 11, marginTop: 2 }}>અરજી કરો</div>
                 </div>
               </Link>
-              <a href="tel:+919876543210" style={{ textDecoration: 'none' }}>
+              <a href="tel:+919904030919" style={{ textDecoration: 'none' }}>
                 <div className="hc-contact-pill" style={{
                   background: '#fff', border: '1.5px solid #bfdbfe',
                   borderRadius: 14, padding: '14px 16px',

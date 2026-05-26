@@ -112,7 +112,7 @@ export default function AdmissionCta() {
             maxWidth: 580,
           }}
         >
-          તમારા બાળકને શ્રી શિવમ વિદ્યાલય અથવા શ્રી વજીબા વિદ્યાલયમાં પ્રવેશ અપાવો
+          તમારા બાળકને શ્રી શિવમ્ વિદ્યાલય અથવા શ્રી વજીબા વિદ્યાલયમાં પ્રવેશ અપાવો
           અને ૧૬ વર્ષના અનુભવી શિક્ષણ પરિવારનો હિસ્સો બનો — જ્યાં ૨૦ સમર્પિત
           શિક્ષકો તમારા બાળકના ઉજ્જવળ ભવિષ્ય માટે દરરોજ કાર્યરત છે.
         </p>
@@ -149,7 +149,7 @@ export default function AdmissionCta() {
           className="cta-a5"
           style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}
         >
-          <Link href="/admissions" style={{ textDecoration: 'none' }}>
+          <Link href="/academics#admissions" style={{ textDecoration: 'none' }}>
             <button
               onMouseEnter={() => setHov1(true)}
               onMouseLeave={() => setHov1(false)}
@@ -201,7 +201,7 @@ export default function AdmissionCta() {
           color: 'rgba(191,219,254,0.65)',
           fontSize: 13, fontWeight: 500,
         }}>
-          વધુ માહિતી માટે સોમ–શનિ સવારે ૯:૦૦ – સાંજે ૫:૦૦ · +91 98765 43210
+          વધુ માહિતી માટે સોમ–શનિ સવારે 9:00 – સાંજે 3:00 · +91 9904030919
         </p>
 
       </div>

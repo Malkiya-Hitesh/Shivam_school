@@ -46,14 +46,20 @@ const facilitiesQuery = `*[_type == "facility"] | order(_createdAt asc){
 
 
 
-const resultsQuery = `*[_type == "result"] | order(year desc, percentage desc){
-  _id, studentName, year, standard, percentage, isTopper,
-  "img": photo.asset->url
-}`
+const resultsQuery = `*[_type == "result"] | order(year desc, class asc) {
+    _id,
+    year,
+    class,
+    totalStudents,
+    passStudents,
+    passRate,
+    distinction,
+    firstClass,
+    "posterUrl": poster.asset->url,
+    "posterAlt": poster.alt,
+    "pdfUrl": pdf.asset->url,
+  }`
 
-const faqQuery = `*[_type == "faq"] | order(_createdAt asc){
-  _id, question, answer
-}`
 
 
 
@@ -61,5 +67,5 @@ export const getTeacher = () => sanityFetch(teachersQuery)
 export const getGallery = () => sanityFetch(galleryQuery)
 export const getAchievements = () => sanityFetch(achievementsQuery)
 export const getFacilities = () => sanityFetch(facilitiesQuery)
-export const getFaq = () => sanityFetch(faqQuery)
+
 export const getResults = () => sanityFetch(resultsQuery)

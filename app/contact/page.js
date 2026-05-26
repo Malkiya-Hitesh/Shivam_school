@@ -1,18 +1,17 @@
 'use client'
 
 import React, { useState } from 'react'
-import Link from 'next/link'
 
-const SHEET_URL =
-  'https://script.google.com/macros/s/AKfycbx4vFO4VGkHkMa1V3sisaOz2_30hWJmYHZWhOw0NTeCRSUI0ktuYI_afLqdzc9LYHFl/exec'
 
+
+const CONTACT_SHEET_URL = process.env.NEXT_PUBLIC_CONTACT_SHEET_URL
 const INFO_CARDS = [
   {
     icon: '📞',
     title: 'ફોન',
     titleEn: 'Call Us',
-    lines: ['+91 98765 43210', '+91 98765 43211'],
-    sub: 'સોમ–શનિ · ૯:૦૦ AM – ૫:૦૦ PM',
+    lines: ['+91 9601173130', '+91 9904030919'],
+    sub: 'સોમ–શનિ · 9:00 AM – 3:00 PM',
     color: '#1a56db',
     light: '#eff6ff',
     border: '#bfdbfe',
@@ -41,7 +40,7 @@ const INFO_CARDS = [
     icon: '🕐',
     title: 'સમય',
     titleEn: 'Office Hours',
-    lines: ['સોમ–શુક્ર: ૮:૦૦ – ૫:૩૦', 'શનિ: ૮:૦૦ – ૧:૦૦'],
+    lines: ['સોમ–શુક્ર: 9:00 – 3:00', 'શનિ: 9:00 – 1:00'],
     sub: 'રવિ & રજા: બંધ',
     color: '#0d9488',
     light: '#f0fdfa',
@@ -50,7 +49,7 @@ const INFO_CARDS = [
 ]
 
 const SCHOOLS = [
-  { name: 'શ્રી શિવમ વિદ્યાલય', grades: 'ધો. ૧–૮', icon: '🏫' },
+  { name: 'શ્રી શિવમ્ વિદ્યાલય', grades: 'ધો. ૧–૮', icon: '🏫' },
   { name: 'શ્રી વજીબા વિદ્યાલય', grades: 'ધો. ૯–૧૨', icon: '🎓' },
 ]
 
@@ -167,7 +166,7 @@ export default function ContactPage() {
 
     setStatus('loading')
     try {
-      await fetch(SHEET_URL, {
+      await fetch(CONTACT_SHEET_URL, {
         method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ timestamp: new Date().toLocaleString('en-IN'), ...form }),
@@ -477,7 +476,7 @@ export default function ContactPage() {
                     {s.grades} · GSEB ગુજરાતી માધ્યમ
                   </p>
                   <p style={{ fontSize: 11, color: '#94a3b8', margin: 0 }}>
-                    📞 +91 9876543210
+                    📞 +91 9904030919 , +91 9601173130
                   </p>
                 </div>
               </div>
@@ -485,7 +484,7 @@ export default function ContactPage() {
 
             {/* WhatsApp button */}
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/9904030919"
               target="_blank" rel="noopener noreferrer"
               style={{ textDecoration: 'none' }}
             >
@@ -506,7 +505,7 @@ export default function ContactPage() {
                     WhatsApp પર સંપર્ક
                   </p>
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', margin: 0 }}>
-                    ઝડપી જવાબ · +91 98765 43210
+                    ઝડપી જવાબ · +91 9904030919
                   </p>
                 </div>
               </div>

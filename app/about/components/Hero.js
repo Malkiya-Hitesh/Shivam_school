@@ -82,7 +82,7 @@ export default function Hero() {
           lineHeight: 1.12, margin: '0 0 8px',
           maxWidth: 820, letterSpacing: '-0.5px',
         }}>
-          શ્રી શિવમ વિદ્યાલય
+          શ્રી શિવમ્ વિદ્યાલય
         </h1>
         <h2 className="ah-a2" style={{
           fontSize: 'clamp(16px,3vw,28px)',
@@ -132,7 +132,7 @@ export default function Hero() {
               📊 પરિણામ જુઓ
             </button>
           </Link>
-          <Link href="/admissions" style={{ textDecoration:'none' }}>
+          <Link href="/academics#admissions" style={{ textDecoration:'none' }}>
             <button style={{
               background: 'rgba(255,255,255,0.12)',
               color: '#fff',

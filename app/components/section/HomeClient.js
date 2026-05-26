@@ -172,7 +172,7 @@ function HomeClient() {
               fontWeight: 800, color: '#0f172a',
               margin: '0 0 10px', lineHeight: 1.2,
             }}>
-              શ્રી શિવમ વિદ્યાલય
+              શ્રી શિવમ્ વિદ્યાલય
             </h2>
             <p style={{ color: '#64748b', fontSize: 13, lineHeight: 1.7, margin: '0 0 14px' }}>
               ધોરણ ૧ થી ૮ · ગુજરાતી માધ્યમ

@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-const SHEET_URL =
-  "https://script.google.com/macros/s/AKfycbx4vFO4VGkHkMa1V3sisaOz2_30hWJmYHZWhOw0NTeCRSUI0ktuYI_afLqdzc9LYHFl/exec";
+  const ADMISSION_SHEET_URL= process.env.NEXT_PUBLIC_ADMISSION_SHEET_URL
 
 const initialForm = {
   fullName: "",
@@ -130,7 +129,7 @@ export default function AdmissionForm() {
 
     setStatus("loading");
     try {
-      await fetch(SHEET_URL, {
+      await fetch(ADMISSION_SHEET_URL, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },

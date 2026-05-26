@@ -35,7 +35,7 @@ export default function Footer() {
             Empowering students with knowledge, values, and confidence for a brighter future.
           </p>
           {/* Social Icons */}
-          <div className="flex gap-3 pt-2">
+          {/* <div className="flex gap-3 pt-2">
             {socials.map(({ icon: Icon, href, label, color }) => (
               <a
                 key={label}
@@ -46,7 +46,7 @@ export default function Footer() {
                 <Icon className="text-[1.1rem]" />
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Quick Links */}
@@ -73,7 +73,7 @@ export default function Footer() {
           <ul className="space-y-3">
             {[
               { icon: FiMapPin, text: 'Kamlapur, Gujarat' },
-              { icon: FiPhone, text: '+91 00000 00000' },
+              { icon: FiPhone, text: '+91 9904030919' },
               { icon: FiMail, text: 'info@sivam.edu.in' },
             ].map(({ icon: Icon, text }) => (
               <li key={text} className="flex items-start gap-3 text-sm">
@@ -90,7 +90,7 @@ export default function Footer() {
           <p className="text-sm leading-relaxed">
             Join our school family for the 2025–26 academic year.
           </p>
-          <Link href="/admission"
+          <Link href="/academics#admissions"
             className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold   bg-gradient-to-r from-[#2A1B7F] to-[#D91C6A] text-white hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
               Apply Now →
             

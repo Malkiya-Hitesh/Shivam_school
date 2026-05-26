@@ -109,22 +109,7 @@ export default function Gallery({ images = [] }) {
           </p>
         </div>
 
-        {/* Stats row */}
-        <div className="gl-a3" style={{
-          display: 'flex', justifyContent: 'center',
-          gap: 32, flexWrap: 'wrap', marginBottom: 44,
-        }}>
-          {[
-            { v: `${images.length}+`, l: 'ફોટો' },
-            { v: '૧૬+', l: 'વર્ષ' },
-            { v: '૫૦+', l: 'કાર્યક્રમ' },
-          ].map((s, i) => (
-            <div key={i} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 26, fontWeight: 900, color: '#1a56db' }}>{s.v}</div>
-              <div style={{ fontSize: 12, color: '#64748b', fontWeight: 600 }}>{s.l}</div>
-            </div>
-          ))}
-        </div>
+    
 
         {/* Masonry grid */}
         <div style={{

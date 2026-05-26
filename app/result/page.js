@@ -1,9 +1,15 @@
 import React from 'react'
 import Main from './components/Main'
+import { getResults } from '../lib/queries'
 
-function page() {
+ async function page() {
+   const results = await getResults()
   return (
- <Main />
+    <main className=" "  style={{
+      marginTop: "clamp(4.2rem,7vw,7rem)"
+    }}>
+ <Main results={results} />
+ </main>
   )
 }
 

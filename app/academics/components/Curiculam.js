@@ -10,7 +10,7 @@ const curriculums = [
     title: 'પ્રાથમિક વિભાગ',
     subtitle: 'Primary Section',
     grades: ['ધોરણ : ૧ થી ૫', 'ધોરણ : ૬ થી ૮'],
-    desc: 'શ્રી શિવમ વિદ્યાલયમાં પ્રાથમિક વિભાગ (ધો. ૧ થી ૮) માં ગણિત, ગુજરાતી, વિજ્ઞાન અને સામાજિક વિજ્ઞાનનો મજબૂત પાયો નાખવામાં આવે છે. સ્માર્ટ ક્લાસ અને પ્રવૃત્તિ આધારિત શિક્ષણ દ્વારા બાળકમાં શીખવાની જિજ્ઞાસા જગાડવામાં આવે છે.',
+    desc: 'શ્રી શિવમ્ વિદ્યાલયમાં પ્રાથમિક વિભાગ (ધો. ૧ થી ૮) માં ગણિત, ગુજરાતી, વિજ્ઞાન અને સામાજિક વિજ્ઞાનનો મજબૂત પાયો નાખવામાં આવે છે. સ્માર્ટ ક્લાસ અને પ્રવૃત્તિ આધારિત શિક્ષણ દ્વારા બાળકમાં શીખવાની જિજ્ઞાસા જગાડવામાં આવે છે.',
     image: '/image/1.webp',
     accentColor: '#16a34a',
     lightColor: '#f0fdf4',
@@ -354,25 +354,9 @@ export default function Curiculam() {
 
               {/* CTA */}
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 4 }}>
+               
                 <a
-                  href="#"
-                  style={{
-                    background: curr.accentColor,
-                    color: '#fff',
-                    padding: '12px 28px',
-                    borderRadius: 12,
-                    fontWeight: 700,
-                    fontSize: 14,
-                    textDecoration: 'none',
-                    boxShadow: `0 4px 16px ${curr.accentColor}40`,
-                    fontFamily: "'Noto Sans Gujarati', sans-serif",
-                    transition: 'opacity 0.2s',
-                  }}
-                >
-                  📄 ફી સ્ટ્રક્ચર ડાઉનલોડ
-                </a>
-                <a
-                  href="#"
+                  href="/academics#admissions"
                   style={{
                     background: '#fff',
                     color: curr.accentColor,
@@ -385,7 +369,7 @@ export default function Curiculam() {
                     fontFamily: "'Noto Sans Gujarati', sans-serif",
                   }}
                 >
-                  📞 વધુ જાણો
+                  🎒 અરજી કરો
                 </a>
               </div>
             </div>

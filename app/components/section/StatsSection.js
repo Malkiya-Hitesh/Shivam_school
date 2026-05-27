@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from 'react'
 
 const stats = [
   { label: 'Years of Experience', labelGu: 'વર્ષ અનુભવ',  value: 16,   icon: '📅', suffix: '+' },
-  { label: 'Happy Students',      labelGu: 'વિદ્યાર્થીઓ', value: 1000, icon: '🧑‍🎓', suffix: '+' },
-  { label: 'Expert Teachers',     labelGu: 'શિક્ષકો',      value: 40,   icon: '👨‍🏫', suffix: '+' },
+  { label: 'Happy Students',      labelGu: 'વિદ્યાર્થીઓ', value: 8000, icon: '🧑‍🎓', suffix: '+' },
+  { label: 'Expert Teachers',     labelGu: 'શિક્ષકો',      value: 25,   icon: '👨‍🏫', suffix: '+' },
   { label: 'Board Pass Rate',     labelGu: 'પ્રભાવ',       value: 98,   icon: '🏆', suffix: '%' },
 ]
 

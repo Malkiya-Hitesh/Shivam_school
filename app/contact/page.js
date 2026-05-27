@@ -20,7 +20,7 @@ const INFO_CARDS = [
     icon: '✉️',
     title: 'ઈમેઈલ',
     titleEn: 'Email Us',
-    lines: ['info@shivamvidyalay.com', 'vajiba@shivamvidyalay.com'],
+    lines: ['shivamschool97@gmail.com'],
     sub: '૨૪ કલાકમાં જવાબ',
     color: '#0369a1',
     light: '#f0f9ff',
@@ -30,7 +30,7 @@ const INFO_CARDS = [
     icon: '📍',
     title: 'સ્થળ',
     titleEn: 'Find Us',
-    lines: ['કામળૂર, જસદણ', 'રાજકોટ, ગુજરાત'],
+    lines: ['કમળાપુર, જસદણ', 'રાજકોટ, ગુજરાત'],
     sub: 'Google Maps પર જુઓ →',
     color: '#0f2d6e',
     light: '#eef2ff',
@@ -435,7 +435,7 @@ export default function ContactPage() {
               boxShadow: '0 4px 20px rgba(26,86,219,0.07)',
             }}>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.5!2d71.1924!3d22.0395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDAyJzIyLjIiTiA3McKwMTEnMzIuNiJF!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d692.6600412681754!2d71.19756421060738!3d22.148671267029737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3958f97fb3d87b8d%3A0x2b66c6e73ffb1542!2sShree%20Shivam%20vidyalaya!5e0!3m2!1sen!2sin!4v1779860364814!5m2!1sen!2sin"
                 width="100%" height="240"
                 style={{ border: 0, display: 'block' }}
                 allowFullScreen loading="lazy"
@@ -443,10 +443,10 @@ export default function ContactPage() {
               />
               <div style={{ padding: '16px 20px', borderTop: '1px solid #dbeafe' }}>
                 <p style={{ fontSize: 13, fontWeight: 700, color: '#0f2d6e', margin: '0 0 2px' }}>
-                  📍 કામળૂર, જસદણ, રાજકોટ
+                  📍 કમળાપુર, જસદણ, રાજકોટ
                 </p>
                 <p style={{ fontSize: 12, color: '#64748b', margin: 0 }}>
-                  ગુજરાત, ભારત · ૩૬૦ ૦૩૦
+                  ગુજરાત, ભારત 
                 </p>
               </div>
             </div>

@@ -11,14 +11,14 @@ const curriculums = [
     subtitle: 'Primary Section',
     grades: ['ધોરણ : ૧ થી ૫', 'ધોરણ : ૬ થી ૮'],
     desc: 'શ્રી શિવમ્ વિદ્યાલયમાં પ્રાથમિક વિભાગ (ધો. ૧ થી ૮) માં ગણિત, ગુજરાતી, વિજ્ઞાન અને સામાજિક વિજ્ઞાનનો મજબૂત પાયો નાખવામાં આવે છે. સ્માર્ટ ક્લાસ અને પ્રવૃત્તિ આધારિત શિક્ષણ દ્વારા બાળકમાં શીખવાની જિજ્ઞાસા જગાડવામાં આવે છે.',
-    image: '/image/1.webp',
+    image: '/image/1a.png',
     accentColor: '#16a34a',
     lightColor: '#f0fdf4',
     borderColor: '#bbf7d0',
     stats: [
       { value: '8', label: 'ધોરણ' },
-      { value: '20+', label: 'શિક્ષકો' },
-      { value: '400+', label: 'વિદ્યાર્થીઓ' },
+      { value: '15+', label: 'શિક્ષકો' },
+      { value: '300+', label: 'વિદ્યાર્થીઓ' },
     ],
     features: [
       '📚 સ્માર્ટ ક્લાસ ટેકનોલોજી',
@@ -37,13 +37,13 @@ const curriculums = [
     subtitle: 'Secondary Section',
     grades: ['ધોરણ : ૯', 'ધોરણ : ૧૦'],
     desc: 'શ્રી વજીબા વિદ્યાલયમાં માધ્યમિક વિભાગ (ધો. ૯-૧૦) માં GSEB બોર્ડની પરીક્ષા માટે સંપૂર્ણ તૈયારી કરાવવામાં આવે છે. ૨૦ અનુભવી શિક્ષકો દ્વારા દરેક વિષયની ઊંડી સમજ આપવામાં આવે છે.',
-    image: '/image/1.webp',
+    image: '/image/2a.png',
     accentColor: '#1d4ed8',
     lightColor: '#eff6ff',
     borderColor: '#bfdbfe',
     stats: [
       { value: '2', label: 'ધોરણ' },
-      { value: '20', label: 'અનુભવી શિક્ષકો' },
+      { value: '10+', label: 'અનુભવી શિક્ષકો' },
       { value: '98%', label: 'પાસ ટકાવારી' },
     ],
     features: [
@@ -63,7 +63,7 @@ const curriculums = [
     subtitle: 'Higher Secondary Section',
     grades: ['ધોરણ : ૧૧', 'ધોરણ : ૧૨ આર્ટ્સ'],
     desc: 'શ્રી વજીબા વિદ્યાલયમાં ઉચ્ચ માધ્યમિક આર્ટ્સ વિભાગ (ધો. ૧૧-૧૨) માં વિદ્યાર્થીઓને ઉચ્ચ શિક્ષણ અને કારકિર્દી માટે સક્ષમ બનાવવામાં આવે છે. વક્તૃત્વ, નેતૃત્વ અને વ્યક્તિત્વ વિકાસ પર વિશેષ ભાર મૂકવામાં આવે છે.',
-    image: '/image/1.webp',
+    image: '/image/3a.png',
     accentColor: '#7c3aed',
     lightColor: '#faf5ff',
     borderColor: '#ddd6fe',
@@ -387,8 +387,8 @@ export default function Curiculam() {
         >
           {[
             { icon: '🏫', label: 'GSEB માન્ય', sub: 'ગુજરાત સ્ટેટ બોર્ડ' },
-            { icon: '👨‍🏫', label: '40+ શિક્ષકો', sub: 'અનુભવી અને પ્રશિક્ષિત' },
-            { icon: '📅', label: '25+ વર્ષ', sub: 'શૈક્ષણિક અનુભવ' },
+            { icon: '👨‍🏫', label: '20+ શિક્ષકો', sub: 'અનુભવી અને પ્રશિક્ષિત' },
+            { icon: '📅', label: '16+ વર્ષ', sub: 'શૈક્ષણિક અનુભવ' },
             { icon: '🌟', label: '1000+ વિદ્યાર્થી', sub: 'સક્રિય નોંધણી' },
           ].map((item, i) => (
             <div

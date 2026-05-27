@@ -74,7 +74,7 @@ export default function Footer() {
             {[
               { icon: FiMapPin, text: 'Kamlapur, Gujarat' },
               { icon: FiPhone, text: '+91 9904030919' },
-              { icon: FiMail, text: 'info@sivam.edu.in' },
+              { icon: FiMail, text: 'shivamschool97@gmail.com' },
             ].map(({ icon: Icon, text }) => (
               <li key={text} className="flex items-start gap-3 text-sm">
                 <Icon className="mt-0.5 flex-shrink-0 text-[var(--accent)]" />

@@ -151,7 +151,7 @@ export default function HomeContact() {
                 {[
                   { icon: '📞', text: '+91 9601173130', sub: 'શ્રી શિવમ્ વિદ્યાલય' },
                   { icon: '📞', text: '+91 9904030919', sub: 'શ્રી વજીબા વિદ્યાલય' },
-                  { icon: '📍', text: 'કામળૂર, જસદણ, રાજકોટ', sub: 'ગુજરાત, ભારત' },
+                  { icon: '📍', text: 'કમળાપુર, જસદણ, રાજકોટ', sub: 'ગુજરાત, ભારત' },
                 ].map((c, i) => (
                   <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                     <span style={{

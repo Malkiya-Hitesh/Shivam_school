@@ -8,7 +8,7 @@ const leaders = [
     name: 'વલ્લભભાઈ રામાણી',
     role: 'ટ્રસ્ટી',
     roleEn: 'Trustee',
-    image: '/image/3.webp',
+    image: '/image/t1.png',
     bio: 'શ્રી વલ્લભભાઈ રામાણીની દૂરંદેશી અને સમર્પણથી ૧૬ વર્ષ પહેલાં આ શૈક્ષણિક સ્વપ્નની શરૂઆત થઈ. તેમના નેતૃત્વ હેઠળ શ્રી શિવમ અને શ્રી વજીબા વિદ્યાલય આજે કામળૂર, જસદણ, રાજકોટ વિસ્તારમાં ૪૫૦ થી વધુ વિદ્યાર્થીઓના ઉજ્જવળ ભવિષ્ય માટે કાર્યરત છે.',
     icon: '🏛️',
     color: '#1a56db',
@@ -19,7 +19,7 @@ const leaders = [
     name: 'ચિરાગ રામાણી',
     role: 'નિયામક',
     roleEn: 'Director',
-    image: '/image/2.webp',
+    image: '/image/t2.png',
     bio: 'શ્રી ચિરાગ રામાણી શાળાના દૈનિક સંચાલન અને શૈક્ષણિક ગુણવત્તાની જવાબદારી સંભાળે છે. ૨૦ અનુભવી શિક્ષકોની ટીમ સાથે તેઓ દરેક વિદ્યાર્થીના સર્વાંગી વિકાસ માટે અથાક પ્રયત્નશીલ છે.',
     icon: '🎓',
     color: '#0f2d6e',
@@ -30,7 +30,7 @@ const leaders = [
     name: 'જયેશ ઢોલરિયા',
     role: 'મેનેજમેન્ટ ટ્રસ્ટી',
     roleEn: 'Management Trustee',
-    image: '/image/4.webp',
+    image: '/image/t3.png',
     bio: 'શ્રી જયેશ ઢોલરિયા શાળાના મેનેજમેન્ટ ટ્રસ્ટી તરીકે શાળાના વિકાસ અને વ્યવસ્થાપનમાં મહત્વની ભૂમિકા ભજવે છે. તેમના પ્રયાસોથી શાળામાં સ્માર્ટ ક્લાસ, કોમ્પ્યુટર લેબ અને પરિવહન જેવી આધુનિક સુવિધાઓ શક્ય બની છે.',
     icon: '⚙️',
     color: '#0369a1',
@@ -137,139 +137,214 @@ export default function Leadership() {
         </div>
 
         {/* ── Main panel ── */}
-        <div
-          key={active}
-          className="ld-panel"
-          style={{
-            background: '#fff',
-            border: `1.5px solid ${leader.border}`,
-            borderRadius: 24,
-            overflow: 'hidden',
-            boxShadow: `0 8px 40px ${leader.color}12`,
-          }}
-        >
-          {/* Top accent bar */}
-          <div style={{ height: 5, background: `linear-gradient(90deg, ${leader.color}, #60a5fa)` }} />
+    <div
+  key={active}
+  className="ld-panel"
+  style={{
+    background: '#fff',
+    border: `1.5px solid ${leader.border}`,
+    borderRadius: 24,
+    overflow: 'hidden',
+    boxShadow: `0 8px 40px ${leader.color}12`,
+  }}
+>
+  {/* Top accent bar */}
+  <div
+    style={{
+      height: 5,
+      background: `linear-gradient(90deg, ${leader.color}, #60a5fa)`,
+    }}
+  />
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          }}>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    }}
+  >
 
-            {/* ── Image side ── */}
-            <div
-              className="ld-img"
+    {/* ── Image side ── */}
+    <div
+      className="ld-img"
+      style={{
+        position: 'relative',
+        minHeight: 320,
+        background: leader.light,
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+      }}
+    >
+      <Image
+        src={leader.image}
+        alt={leader.name}
+        fill
+        style={{
+          objectFit: 'contain',
+          objectPosition: 'center',
+          padding: '10px',
+        }}
+      />
+
+      {/* Role badge on image */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 16,
+          left: 16,
+          background: leader.color,
+          color: '#fff',
+          fontSize: 12,
+          fontWeight: 700,
+          padding: '6px 16px',
+          borderRadius: 50,
+          boxShadow: `0 4px 12px ${leader.color}55`,
+          letterSpacing: '0.04em',
+          zIndex: 2,
+        }}
+      >
+        {leader.icon} {leader.role}
+      </div>
+    </div>
+
+    {/* ── Content side ── */}
+    <div
+      className="ld-content"
+      style={{
+        padding: 'clamp(28px,4vw,48px)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        gap: 16,
+      }}
+    >
+      {/* Role pill */}
+      <span
+        style={{
+          display: 'inline-block',
+          alignSelf: 'flex-start',
+          background: leader.light,
+          color: leader.color,
+          border: `1px solid ${leader.border}`,
+          fontSize: 11,
+          fontWeight: 700,
+          padding: '4px 14px',
+          borderRadius: 50,
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+        }}
+      >
+        {leader.roleEn}
+      </span>
+
+      <h3
+        style={{
+          fontSize: 'clamp(22px,3vw,32px)',
+          fontWeight: 900,
+          color: '#0f172a',
+          margin: 0,
+          lineHeight: 1.2,
+        }}
+      >
+        {leader.name}
+      </h3>
+
+      <div
+        className="ld-divider"
+        style={{ background: leader.color }}
+      />
+
+      <p
+        style={{
+          color: '#475569',
+          fontSize: 15.5,
+          lineHeight: 1.9,
+          margin: 0,
+        }}
+      >
+        {leader.bio}
+      </p>
+
+      {/* Quick facts */}
+      <div
+        style={{
+          display: 'flex',
+          gap: 12,
+          flexWrap: 'wrap',
+          marginTop: 8,
+        }}
+      >
+        {active === 0 &&
+          [
+            { icon: '📅', text: '૧૬+ વર્ષ અનુભવ' },
+            { icon: '🏫', text: '૨ વિદ્યાલય' },
+            { icon: '🧑‍🎓', text: '૪૫૦+ વિદ્યાર્થી' },
+          ].map((f, i) => (
+            <span
+              key={i}
               style={{
-                position: 'relative',
-                minHeight: 320,
-                background: leader.light,
-                overflow: 'hidden',
-              }}
-            >
-              <Image
-                src={leader.image}
-                alt={leader.name}
-                fill
-                className="object-cover object-top"
-                style={{ objectFit: 'cover', objectPosition: 'top' }}
-              />
-              {/* Role badge on image */}
-              <div style={{
-                position: 'absolute', bottom: 16, left: 16,
-                background: leader.color,
-                color: '#fff',
-                fontSize: 12, fontWeight: 700,
-                padding: '6px 16px', borderRadius: 50,
-                boxShadow: `0 4px 12px ${leader.color}55`,
-                letterSpacing: '0.04em',
-              }}>
-                {leader.icon} {leader.role}
-              </div>
-            </div>
-
-            {/* ── Content side ── */}
-            <div
-              className="ld-content"
-              style={{
-                padding: 'clamp(28px,4vw,48px)',
-                display: 'flex', flexDirection: 'column',
-                justifyContent: 'center', gap: 16,
-              }}
-            >
-              {/* Role pill */}
-              <span style={{
-                display: 'inline-block', alignSelf: 'flex-start',
                 background: leader.light,
                 color: leader.color,
                 border: `1px solid ${leader.border}`,
-                fontSize: 11, fontWeight: 700,
-                padding: '4px 14px', borderRadius: 50,
-                letterSpacing: '0.1em', textTransform: 'uppercase',
-              }}>
-                {leader.roleEn}
-              </span>
+                fontSize: 12,
+                fontWeight: 700,
+                padding: '5px 14px',
+                borderRadius: 50,
+              }}
+            >
+              {f.icon} {f.text}
+            </span>
+          ))}
 
-              <h3 style={{
-                fontSize: 'clamp(22px,3vw,32px)',
-                fontWeight: 900, color: '#0f172a',
-                margin: 0, lineHeight: 1.2,
-              }}>
-                {leader.name}
-              </h3>
+        {active === 1 &&
+          [
+            { icon: '👨‍🏫', text: '૨૦ શિક્ષક ટીમ' },
+            { icon: '📋', text: 'દૈનિક સંચાલન' },
+            { icon: '🎯', text: 'GSEB નિષ્ણાત' },
+          ].map((f, i) => (
+            <span
+              key={i}
+              style={{
+                background: leader.light,
+                color: leader.color,
+                border: `1px solid ${leader.border}`,
+                fontSize: 12,
+                fontWeight: 700,
+                padding: '5px 14px',
+                borderRadius: 50,
+              }}
+            >
+              {f.icon} {f.text}
+            </span>
+          ))}
 
-              <div className="ld-divider" style={{ background: leader.color }} />
-
-              <p style={{
-                color: '#475569', fontSize: 15.5,
-                lineHeight: 1.9, margin: 0,
-              }}>
-                {leader.bio}
-              </p>
-
-              {/* Quick facts */}
-              <div style={{
-                display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 8,
-              }}>
-                {active === 0 && [
-                  { icon: '📅', text: '૧૬+ વર્ષ અનુભવ' },
-                  { icon: '🏫', text: '૨ વિદ્યાલય' },
-                  { icon: '🧑‍🎓', text: '૪૫૦+ વિદ્યાર્થી' },
-                ].map((f, i) => (
-                  <span key={i} style={{
-                    background: leader.light, color: leader.color,
-                    border: `1px solid ${leader.border}`,
-                    fontSize: 12, fontWeight: 700,
-                    padding: '5px 14px', borderRadius: 50,
-                  }}>{f.icon} {f.text}</span>
-                ))}
-                {active === 1 && [
-                  { icon: '👨‍🏫', text: '૨૦ શિક્ષક ટીમ' },
-                  { icon: '📋', text: 'દૈનિક સંચાલન' },
-                  { icon: '🎯', text: 'GSEB નિષ્ણાત' },
-                ].map((f, i) => (
-                  <span key={i} style={{
-                    background: leader.light, color: leader.color,
-                    border: `1px solid ${leader.border}`,
-                    fontSize: 12, fontWeight: 700,
-                    padding: '5px 14px', borderRadius: 50,
-                  }}>{f.icon} {f.text}</span>
-                ))}
-                {active === 2 && [
-                  { icon: '💻', text: 'સ્માર્ટ ક્લાસ' },
-                  { icon: '🏗️', text: 'ઇન્ફ્રા વિકાસ' },
-                  { icon: '🚌', text: 'પરિવહન' },
-                ].map((f, i) => (
-                  <span key={i} style={{
-                    background: leader.light, color: leader.color,
-                    border: `1px solid ${leader.border}`,
-                    fontSize: 12, fontWeight: 700,
-                    padding: '5px 14px', borderRadius: 50,
-                  }}>{f.icon} {f.text}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        {active === 2 &&
+          [
+            { icon: '💻', text: 'સ્માર્ટ ક્લાસ' },
+            { icon: '🏗️', text: 'ઇન્ફ્રા વિકાસ' },
+            { icon: '🚌', text: 'પરિવહન' },
+          ].map((f, i) => (
+            <span
+              key={i}
+              style={{
+                background: leader.light,
+                color: leader.color,
+                border: `1px solid ${leader.border}`,
+                fontSize: 12,
+                fontWeight: 700,
+                padding: '5px 14px',
+                borderRadius: 50,
+              }}
+            >
+              {f.icon} {f.text}
+            </span>
+          ))}
+      </div>
+    </div>
+  </div>
+</div>
 
         {/* ── All 3 mini cards below ── */}
         <div style={{
